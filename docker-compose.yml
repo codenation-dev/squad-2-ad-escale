@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+
+  # Aplicação PetCode
+  petcode:
+    build: .
+    container_name: "petcode"
+    ports:
+      - "80:80"
+    volumes:
+      - type: bind
+        source: ./application
+        target: /app
+    networks:
+      - codenation
+
+  # Banco de dados
+  mysql:
+    image: mysql:5.7
+    container_name: "mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: petcode
+    networks:
+      - codenation
+
+networks: 
+  codenation:
+    external:
+      name: codenation
