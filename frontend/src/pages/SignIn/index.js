@@ -1,16 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { IoMdPaw } from 'react-icons/io';
-import { Container } from './styles';
 
 export default function SignIn() {
   return (
     <>
-      <Container>
-        <h1>
-          <IoMdPaw />
-        </h1>
-      </Container>
+      <IoMdPaw size="130" color="#191970" />
+      <h1>Pet Codes</h1>
+      <form>
+        <input type="email" placeholder="Seu Email" />
+        <input type="password" placeholder="Sua Senha" />
+
+        <button type="submit">Acessar</button>
+        <Link to="/signup">Crie sua conta</Link>
+      </form>
     </>
   );
 }
