@@ -1,3 +1,5 @@
+// pagina de estilos para quem esta logado
+
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`

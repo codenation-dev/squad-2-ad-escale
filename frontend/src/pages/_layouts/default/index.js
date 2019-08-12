@@ -1,3 +1,5 @@
+// rotas de pagina padrao para quem nao esta logado
+
 import React from 'react';
 import PropTypes from 'prop-types';
 

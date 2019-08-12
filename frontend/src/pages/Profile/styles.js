@@ -1,3 +1,5 @@
+// pagina de estilos do perfil pet
+
 import styled from 'styled-components';
 
 export const Container = styled.div`

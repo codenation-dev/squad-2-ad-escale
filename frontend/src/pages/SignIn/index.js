@@ -1,7 +1,9 @@
+// pagina de login
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { IoMdPaw } from 'react-icons/io';
+import { IoMdPaw } from 'react-icons/io'; // importação do icone pet de uma biblioteca
 
 export default function SignIn() {
   return (

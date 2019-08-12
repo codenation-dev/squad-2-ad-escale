@@ -1,16 +1,22 @@
+// pagina de perfil pet
+
 import React from 'react';
 import Dog from './dog.png';
 
 export default function Profile() {
   return (
     <>
-      <img src={Dog} alt="" />
-      <h1>Perfil do Pet</h1>
-      <h1>Rex</h1>
-      <h2>Cahorro</h2>
-      <h2>Adulto/Macho/Pequeno</h2>
-      <h2>Disponivel para Adoção</h2>
-      <h2>todas as vacinas em dia!!!</h2>
+      <section>
+        <div />
+        <img src={Dog} alt="" />
+        <h1>Rex</h1>
+        <h3>Adoção</h3>
+        <h3>Adulto/Macho/Pequeno</h3>
+        <p>Disponivel para Adoção</p>
+        <p>todas as vacinas em dia!!!</p>
+        <p>Rua Pedro Américo, 32</p>
+        <span>11-9999-8888</span>
+      </section>
     </>
   );
 }

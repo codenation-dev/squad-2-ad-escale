@@ -1,7 +1,9 @@
+// pagina de cadastro
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { IoMdPaw } from 'react-icons/io';
+import { IoMdPaw } from 'react-icons/io'; // importando icone de uma biblioteca padrao
 
 export default function Sign() {
   return (

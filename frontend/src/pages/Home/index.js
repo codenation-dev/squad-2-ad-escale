@@ -1,6 +1,6 @@
-import React from 'react';
+// pagina home(inicial)
 
-// import { Container } from './styles';
+import React from 'react';
 
 export default function Home() {
   return <h1>Home</h1>;
