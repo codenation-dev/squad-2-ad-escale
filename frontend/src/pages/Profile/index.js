@@ -1,7 +1,8 @@
 // pagina de perfil pet
 
 import React from 'react';
-import Dog from './dog.png';
+
+// import { Container } from './styles';
 
 export default function Profile() {
   return (
