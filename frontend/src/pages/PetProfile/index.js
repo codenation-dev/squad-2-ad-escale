@@ -4,12 +4,12 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-export default function Profile() {
+export default function PetProfile() {
   return (
     <>
       <section>
         <div />
-        <img src={Dog} alt="" />
+        {/* <img src={Dog} alt="" /> */}
         <h1>Rex</h1>
         <h3>Adoção</h3>
         <h3>Adulto/Macho/Pequeno</h3>
