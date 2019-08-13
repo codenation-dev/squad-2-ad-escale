@@ -30,8 +30,8 @@ const HomeSliderBar = () => {
     <>
       <h1>HomeSliderBar</h1>
     </>
-  )
-}
+  );
+};
 
 // Componente de filtro central, com as principais opções de filtro
 const HomeFilterBar = ({ handle }) => {
@@ -98,6 +98,7 @@ const HomeFooterTradeBar = () => {
   );
 };
 
+// Componente página Home que renderiza os componentes menores
 export default class Home extends React.Component {
   state = {
     pets: [],
