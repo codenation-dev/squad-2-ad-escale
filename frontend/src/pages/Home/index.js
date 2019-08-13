@@ -5,6 +5,8 @@
 import React from 'react';
 import data from '../../data';
 
+// Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
+// link para se inscrever e fazer login no site
 const HomeHeadBar = () => {
   return (
     <>
@@ -13,6 +15,7 @@ const HomeHeadBar = () => {
   );
 };
 
+// Componente de barra de navegação principal do site, com os recursos principais disponibilizados pelo site
 const HomeNavBar = () => {
   return (
     <>
@@ -21,6 +24,16 @@ const HomeNavBar = () => {
   );
 };
 
+// Componente central slider para campanhas
+const HomeSliderBar = () => {
+  return (
+    <>
+      <h1>HomeSliderBar</h1>
+    </>
+  )
+}
+
+// Componente de filtro central, com as principais opções de filtro
 const HomeFilterBar = ({ handle }) => {
   return (
     <>
@@ -54,6 +67,7 @@ const HomeFilterBar = ({ handle }) => {
   );
 };
 
+// Componente de conteúdo da home, o body efetivamente
 const HomeContent = ({ pets }) => {
   return (
     <>
@@ -66,6 +80,7 @@ const HomeContent = ({ pets }) => {
   );
 };
 
+// Componente de footer, onde pode ter o mapa de navegação do site por exemplo, com todos os links
 const HomeFooterNavBar = () => {
   return (
     <>
@@ -74,6 +89,7 @@ const HomeFooterNavBar = () => {
   );
 };
 
+// Componente de footer para marca registrada, redes socias e etc.
 const HomeFooterTradeBar = () => {
   return (
     <>
