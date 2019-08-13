@@ -1,5 +1,7 @@
 // pagina home(inicial)
 
+// inspiração https://www.petfinder.com/
+
 import React from 'react';
 import data from '../../data';
 
