@@ -3,6 +3,83 @@
 import React from 'react';
 import data from '../../data';
 
+const HomeHeadBar = () => {
+  return (
+    <>
+      <h1>HomeHeadBar</h1>
+    </>
+  );
+};
+
+const HomeNavBar = () => {
+  return (
+    <>
+      <h1>HomeNavBar</h1>
+    </>
+  );
+};
+
+const HomeFilterBar = ({ handle }) => {
+  return (
+    <>
+      <nav>
+        <button
+          onClick={e => {
+            handle(e);
+          }}
+          value="achados"
+        >
+          Achados
+        </button>
+        <button
+          onClick={e => {
+            handle(e);
+          }}
+          value="perdidos"
+        >
+          Perdidos
+        </button>
+        <button
+          onClick={e => {
+            handle(e);
+          }}
+          value="adocao"
+        >
+          Adoção
+        </button>
+      </nav>
+    </>
+  );
+};
+
+const HomeContent = ({ pets }) => {
+  return (
+    <>
+      {pets.map(item => {
+        return (
+          <h1>{`${item.especie}, ${item.nome}, ${item.raca}, ${item.status}.`}</h1>
+        );
+      })}
+    </>
+  );
+};
+
+const HomeFooterNavBar = () => {
+  return (
+    <>
+      <h1>HomeFooterNavBar</h1>
+    </>
+  );
+};
+
+const HomeFooterTradeBar = () => {
+  return (
+    <>
+      <h1>HomeFooterTradeBar</h1>
+    </>
+  );
+};
+
 export default class Home extends React.Component {
   state = {
     pets: [],
@@ -30,21 +107,12 @@ export default class Home extends React.Component {
     return (
       <>
         <div className="row">
-          <button onClick={this.handleButtons} value="achados">
-            Achados
-          </button>
-          <button onClick={this.handleButtons} value="perdidos">
-            Perdidos
-          </button>
-          <button onClick={this.handleButtons} value="adocao">
-            Adoção
-          </button>
-
-          {this.state.filteredPets.map(item => {
-            return (
-              <h1>{`${item.especie}, ${item.nome}, ${item.raca}, ${item.status}.`}</h1>
-            );
-          })}
+          <HomeHeadBar />
+          <HomeNavBar />
+          <HomeFilterBar handle={this.handleButtons} />
+          <HomeContent pets={this.state.filteredPets} />
+          <HomeFooterNavBar />
+          <HomeFooterTradeBar />
         </div>
       </>
     );
