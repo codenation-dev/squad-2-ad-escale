@@ -3,7 +3,7 @@
 // inspiração https://www.petfinder.com/
 
 import React from 'react';
-import data from '../../data';
+import data from '../../data/pet.json';
 
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site
