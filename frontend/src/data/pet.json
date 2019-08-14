@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "status": "adocao",
+    "especie": "cachorro",
+    "nome": "monina",
+    "raca": "doberman"
+  },
+  {
+    "id": 1,
+    "status": "adocao",
+    "especie": "cachorro",
+    "nome": "kelvin",
+    "raca": "poodle"
+  },
+  {
+    "id": 2,
+    "status": "achados",
+    "especie": "gato",
+    "nome": "leo",
+    "raca": "persa"
+  },
+  {
+    "id": 3,
+    "status": "achados",
+    "especie": "gato",
+    "nome": "kirikiri",
+    "raca": "siamês"
+  },
+  {
+    "id": 4,
+    "status": "perdidos",
+    "especie": "gato",
+    "nome": "ticao",
+    "raca": "siamês"
+  }
+]
