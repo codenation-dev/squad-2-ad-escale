@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 315px;
+  max-width: 500px;
   text-align: center;
 
   form {
@@ -50,5 +50,31 @@ export const Content = styled.div`
       font-size: 16px;
       opacity: 0.8;
     }
+  }
+  #footerpetprofile {
+    height: 50px;
+    background: #333;
+    color: #fff;
+  }
+
+  #headerpetprofile {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background: #333;
+    color: #fff;
+    justify-content: space-between;
+
+    a {
+      color: #fff;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  }
+
+  #divpetprofile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
