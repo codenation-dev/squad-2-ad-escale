@@ -15,10 +15,10 @@ import data from '../../data/pet.json';
  -SignUp
 
  */
-const HomeHeadBar = () => {
+const Header = () => {
   return (
     <>
-      <h1>HomeHeadBar</h1>
+      <h1>Header</h1>
     </>
   );
 };
@@ -30,10 +30,10 @@ const HomeHeadBar = () => {
   Animais encontrados
 
 */
-const HomeSliderBar = () => {
+const HomeSlider = () => {
   return (
     <>
-      <h1>HomeSliderBar</h1>
+      <h1>HomeSlider</h1>
     </>
   );
 };
@@ -51,7 +51,7 @@ const HomeSliderBar = () => {
 
 */
 
-const HomeFilterBar = ({ handle }) => {
+const HomeFilter = ({ handle }) => {
   return (
     <>
       <nav>
@@ -98,19 +98,29 @@ const HomeContent = ({ pets }) => {
 };
 
 // Componente de footer, onde pode ter o mapa de navegação do site por exemplo, com todos os links
-const HomeFooterNavBar = () => {
+const FooterNav = () => {
   return (
     <>
-      <h1>HomeFooterNavBar</h1>
+      <h1>FooterNav</h1>
     </>
   );
 };
 
 // Componente de footer para marca registrada, redes socias e etc.
-const HomeFooterSocialTradeBar = () => {
+const FooterSocialTrademark = () => {
   return (
     <>
-      <h1>HomeFooterTradeBar</h1>
+      <h1>FooterSocialTrademark</h1>
+    </>
+  );
+};
+
+// Componente de footer global
+const Footer = () => {
+  return (
+    <>
+      <FooterNav />
+      <FooterSocialTrademark />
     </>
   );
 };
@@ -143,11 +153,11 @@ export default class Home extends React.Component {
     return (
       <>
         <div className="row">
-          <HomeHeadBar />
-          <HomeFilterBar handle={this.handleButtons} />
+          <Header />
+          <HomeSlider />
+          <HomeFilter handle={this.handleButtons} />
           <HomeContent pets={this.state.filteredPets} />
-          <HomeFooterNavBar />
-          <HomeFooterSocialTradeBar />
+          <Footer />
         </div>
       </>
     );
