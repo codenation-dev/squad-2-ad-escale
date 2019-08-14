@@ -5,8 +5,16 @@
 import React from 'react';
 import data from '../../data';
 
-// Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
-// link para se inscrever e fazer login no site
+/* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
+ link para se inscrever e fazer login no site
+ 
+ Componentes: 
+ -Logotipo
+ -Campo de Busca Geral no Site(igual o recipes, busca abrangente com rotas inclusive)
+ -SignIn
+ -SignUp
+
+ */
 const HomeHeadBar = () => {
   return (
     <>
@@ -15,16 +23,13 @@ const HomeHeadBar = () => {
   );
 };
 
-// Componente de barra de navegação principal do site, com os recursos principais disponibilizados pelo site
-const HomeNavBar = () => {
-  return (
-    <>
-      <h1>HomeNavBar</h1>
-    </>
-  );
-};
+/* Componente central slider para campanhas
 
-// Componente central slider para campanhas
+  Disponiveis para adoção
+  Animais que acabaram de ser adotados
+  Animais encontrados
+
+*/
 const HomeSliderBar = () => {
   return (
     <>
@@ -33,7 +38,19 @@ const HomeSliderBar = () => {
   );
 };
 
-// Componente de filtro central, com as principais opções de filtro
+/* Componente de filtro central, com as principais opções de filtro
+  
+  Categorias básicas
+  
+  - Achados
+  - Perdidos
+  - Adoção
+
+  - Outros filtros que podem ser explorados
+
+
+*/
+
 const HomeFilterBar = ({ handle }) => {
   return (
     <>
@@ -90,7 +107,7 @@ const HomeFooterNavBar = () => {
 };
 
 // Componente de footer para marca registrada, redes socias e etc.
-const HomeFooterTradeBar = () => {
+const HomeFooterSocialTradeBar = () => {
   return (
     <>
       <h1>HomeFooterTradeBar</h1>
@@ -127,11 +144,10 @@ export default class Home extends React.Component {
       <>
         <div className="row">
           <HomeHeadBar />
-          <HomeNavBar />
           <HomeFilterBar handle={this.handleButtons} />
           <HomeContent pets={this.state.filteredPets} />
           <HomeFooterNavBar />
-          <HomeFooterTradeBar />
+          <HomeFooterSocialTradeBar />
         </div>
       </>
     );
