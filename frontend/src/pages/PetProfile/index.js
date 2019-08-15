@@ -5,7 +5,27 @@ import { Link } from 'react-router-dom';
 
 import { IoMdPaw, IoMdMail } from 'react-icons/io';
 import { FaWhatsapp } from 'react-icons/fa';
-import Dog from './dog.jpg';
+
+import SwiftSlider from 'react-swift-slider';
+
+import Dog1 from './dog1.jpg';
+import Dog2 from './dog2.jpg';
+import Dog3 from './dog3.jpg';
+
+const data = [
+  {
+    id: '1',
+    src: Dog1,
+  },
+  {
+    id: '2',
+    src: Dog2,
+  },
+  {
+    id: '3',
+    src: Dog3,
+  },
+];
 
 export default function PetProfile() {
   return (
@@ -19,8 +39,9 @@ export default function PetProfile() {
           <Link to="/signin">Login</Link>
         </header>
         <br />
-        <img src={Dog} alt="" width="200" height="200" />
-        <br />
+        <div id="divslider">
+          <SwiftSlider data={data} height={200} />
+        </div>
         <br />
         <div id="divpetprofile">
           <section id="section1">
