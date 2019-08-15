@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   background: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  {/*align-items: center; */} 
 `;
 
 export const Content = styled.div`
