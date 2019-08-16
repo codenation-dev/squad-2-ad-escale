@@ -1,12 +1,52 @@
-// pagina de estilos de login
-
 import styled from 'styled-components';
 
-export default Container = styled.div`
+export const Wrapper = styled.div`
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Container = styled.div`
+  width: 100%;
   max-width: 350px;
-  background: #0000cd;
-  border-radius: 4px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  margin: 80px auto;
+  text-align: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    input {
+      background: rgba(0, 0, 0, 0.4);
+      border: 0;
+      border-radius: 4px;
+      height: 44px;
+      padding: 0 15px;
+      color: #0000cd;
+      margin: 0 0 10px;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    button {
+      margin: 5px 0 0;
+      height: 44px;
+      background: #333;
+      font-weight: bold;
+      border: 0;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    a {
+      color: #0000cd;
+      margin-top: 15px;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
 `;
