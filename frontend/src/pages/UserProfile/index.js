@@ -4,9 +4,8 @@ import React from 'react';
 
 export default class UserProfile extends React.Component {
   
-  state =  { 
-
-  };
+  state =  {  }; //nao está errado
+  
   handleChangeInput = e =>{
     this.setState({
       [e.target.name]: e.target.value
