@@ -3,12 +3,22 @@
     "id": 0,
     "status": "adocao",
     "especie": "cachorro",
+<<<<<<< HEAD
     "nome": "monina",
     "raca": "doberman"
+=======
+    "nome": "rex",
+    "raca": "doberman",
+    "idade": "adulto",
+    "sexo": "macho",
+    "descrição": "disponível para adoção, todas as vacinas em dia",
+    "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
+>>>>>>> 35a65706fe88c4c889aab1c28f6d0d772d142d5e
   },
   {
     "id": 1,
     "status": "adocao",
+<<<<<<< HEAD
     "especie": "cachorro",
     "nome": "kelvin",
     "raca": "poodle"
@@ -33,5 +43,47 @@
     "especie": "gato",
     "nome": "ticao",
     "raca": "siamês"
+=======
+    "especie": "gato",
+    "nome": "kirikiri",
+    "raca": "siamês",
+    "idade": "adulto",
+    "sexo": "fêmea",
+    "descrição": "disponível para adoção, todas as vacinas em dia",
+    "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
+  },
+  {
+    "id": 2,
+    "status": "perdidos",
+    "especie": "cachorro",
+    "nome": "kelvin",
+    "raca": "vira-lata",
+    "idade": "filhote",
+    "sexo": "macho",
+    "descrição": "disponível para adoção, todas as vacinas em dia",
+    "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
+  },
+  { 
+    "id": 3,
+    "status": "achados",
+    "especie": "cachorro",
+    "nome": "pitoco",
+    "raca": "scotish terrier",
+    "idade": "adulto",
+    "sexo": "macho",
+    "descrição": "disponível para adoção, todas as vacinas em dia",
+    "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
+  },
+  {
+    "id": 4,
+    "status": "adocao",
+    "especie": "coelho",
+    "nome": "pow",
+    "raca": "doberman",
+    "idade": "filhote",
+    "sexo": "fêmea",
+    "descrição": "disponível para adoção, todas as vacinas em dia",
+    "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
+>>>>>>> 35a65706fe88c4c889aab1c28f6d0d772d142d5e
   }
 ]
