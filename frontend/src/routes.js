@@ -1,16 +1,13 @@
-// pagina de rotas
-
 import React from 'react';
-import { Switch } from 'react-router-dom';
-import Route from './Route';
+import { Switch, Route } from 'react-router-dom';
 
-import Home from '../pages/Home';
+import Home from './pages/Home';
 
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
-import PetProfile from '../pages/PetProfile';
-import UserProfile from '../pages/UserProfile';
+import PetProfile from './pages/PetProfile';
+import UserProfile from './pages/UserProfile';
 
 export default function Routes() {
   return (
