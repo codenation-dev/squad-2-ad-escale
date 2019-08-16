@@ -12,6 +12,13 @@ export default class UserProfile extends React.Component {
     })
   }
 
+  handleSubmit = e => {
+    this.setState({
+      userprofile: [{name:this.state.name, email:this.state.email, password: this.state.password, phone: this.state.phone}]
+    })
+  }
+  
+
   componentWillMount(){
 
 
@@ -24,12 +31,13 @@ export default class UserProfile extends React.Component {
 
 
   render() {
+    
     return (
       <>
         <h1>
           <h2>User Profile</h2>
         </h1>
-        <form>
+        <form onSubmit ={ e=>{this.handleSubmit(e)} }>
           <input name="name" type="text" placeholder="Seu Nome" value={this.state.name} onChange = {(e) => {this.handleChangeInput(e)}} />
           <input name="lastname" type="text" placeholder="Seu Sobrenome" value={this.state.lastname} onChange = {(e) => {this.handleChangeInput(e)}}/>
           <input name="phone" type="tel" placeholder="Seu Telefone" value={this.state.phone} onChange = {(e) => {this.handleChangeInput(e)}} />
