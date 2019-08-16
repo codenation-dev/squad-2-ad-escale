@@ -1,0 +1,37 @@
+[
+	{
+		"name": "José Paulo",
+		"lastname": "Duarte", 		
+		"email": "jjosepauloduarte@eternalam.com.br",
+		"password": "qBtXtpjwuX",
+		"phone": "(85) 2817-2466"
+	},
+	{
+		"name": "Joana Sebastiana Sônia",
+		"lastname": "Drumond",		
+		"email": "joanasebastianasoniadrumond__joanasebastianasoniadrumond@esctech.com.br",
+		"password": "QR22SqK3RM",
+		"phone": "(82) 2863-3777"
+	},
+	{
+		"name": "Anthony Nathan",
+		"lastname": "Costa",
+		"email": "aanthonynathancosta@freitasepozzatti.com.br",
+		"password": "RXNWBkIDlq",
+		"phone": "(43) 2654-5331"
+	},
+	{
+		"name": "Cláudia Ayla Lavínia",
+		"lastname": "Aragão",		
+		"email": "cclaudiaaylalaviniaaragao@hotrmail.com",
+		"password": "lWmDa1EydS",
+		"phone": "(96) 2703-6699"		
+	},
+	{
+		"name": "Olivia Hadassa Tereza", 
+		"lastname":"Figueiredo",
+		"email": "ooliviahadassaterezafigueiredo@a-qualitybrasil.com.br",
+		"password": "aOGTaClMkf",
+		"phone": "(91) 2718-8699"
+	}
+]
