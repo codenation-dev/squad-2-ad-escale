@@ -7,6 +7,7 @@
     "raca": "doberman",
     "idade": "adulto",
     "sexo": "macho",
+    "porte": "grande",
     "descrição": "disponível para adoção, todas as vacinas em dia",
     "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
   },
@@ -18,6 +19,7 @@
     "raca": "siamês",
     "idade": "adulto",
     "sexo": "fêmea",
+    "porte": "grande",
     "descrição": "disponível para adoção, todas as vacinas em dia",
     "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
   },
@@ -29,6 +31,7 @@
     "raca": "vira-lata",
     "idade": "filhote",
     "sexo": "macho",
+    "porte": "grande",
     "descrição": "disponível para adoção, todas as vacinas em dia",
     "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
   },
@@ -40,6 +43,7 @@
     "raca": "scotish terrier",
     "idade": "adulto",
     "sexo": "macho",
+    "porte": "grande",
     "descrição": "disponível para adoção, todas as vacinas em dia",
     "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
   },
@@ -51,6 +55,7 @@
     "raca": "doberman",
     "idade": "filhote",
     "sexo": "fêmea",
+    "porte": "grande",
     "descrição": "disponível para adoção, todas as vacinas em dia",
     "thumbnails": ["./images/dog1.jpg","./images/dog2.jpg","./images/dog3.jpg"]
   }
