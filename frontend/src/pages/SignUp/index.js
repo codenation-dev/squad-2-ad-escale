@@ -57,14 +57,14 @@ class SignUp extends Component {
             </h1>
             <form onSubmit={this.handleSignUp}>
               <input
-                type="username"
+                type="text"
                 placeholder="Usuário"
                 onChange={e => this.setState({ username: e.target.value })}
               />
               <input
                 type="email"
                 placeholder="Email"
-                onChange={e => this.setState({ username: e.target.value })}
+                onChange={e => this.setState({ email: e.target.value })}
               />
               <input
                 type="password"
@@ -77,8 +77,8 @@ class SignUp extends Component {
                 onChange={e => this.setState({ confirmPassword: e.target.value })}
               />
 
-              <button type="submit">Login</button>
-              <Link to="/signin">Criar Conta</Link>
+              <button type="submit">Criar Conta</button>
+              <Link to="/signin">Já tenho Cadastro</Link>
             </form>
           </Container>
         </Wrapper>
