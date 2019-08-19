@@ -5,7 +5,7 @@ import React from 'react';
 import axios from 'axios';
 // Estilos
 // Importações bootstrap
-import { Container, Row } from 'react-bootstrap'
+import { Container } from 'react-bootstrap';
 
 // importação dos componentes
 import Footer from '../../components/footer';
@@ -22,54 +22,50 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    const endpoint = 'https://petcode.herokuapp.com/api/pet/'
-    this.handleGetAllPets(endpoint)
-
+    const endpoint = 'https://petcode.herokuapp.com/api/pet/';
+    this.handleGetAllPets(endpoint);
   }
 
-  handleGetAllPets = async (endpoint) => {
-    try{
+  handleGetAllPets = async endpoint => {
+    try {
       await axios
         .get(endpoint)
         .then(response => {
           this.setState({
             pets: response.data,
-          })
+          });
         })
-        .then(()=>{
+        .then(() => {
           this.setState({
-            filteredPets: this.state.pets
-          })
-        })
-    }catch(e){
-      alert(e)
+            filteredPets: this.state.pets,
+          });
+        });
+    } catch (e) {
+      alert(e);
     }
-  }
+  };
 
   handleButtons = e => {
- 
+    let tempArrayPets = this.state.pets.filter(item => {
+      let name = e.target.name.toUpperCase();
+      return item.category.toUpperCase().includes(name);
+    });
+
+    this.setState({
+      filteredPets: tempArrayPets,
+    });
   };
 
   render() {
     return (
       <>
-          <Container>
-            <Row>
-              <Header />
-            </Row>
-            <Row>
-              <HomeSlider />
-            </Row>
-            <Row>
-              <HomeFilter handle={this.handleButtons} />
-            </Row>
-            <Row>
-              <HomeContent pets={this.state.filteredPets} />
-            </Row>
-            <Row>
-              <Footer />
-            </Row>
-          </Container>
+        <Container>
+          <Header />
+          <HomeSlider />
+          <HomeFilter handle={this.handleButtons} />
+          <HomeContent pets={this.state.filteredPets} />
+          <Footer />
+        </Container>
       </>
     );
   }
