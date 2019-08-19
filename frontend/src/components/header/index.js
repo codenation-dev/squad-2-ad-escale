@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Form, FormControl, Button, Row } from 'react-bootstrap'
+import { Navbar, Form, FormControl, Button } from 'react-bootstrap'
 
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site
@@ -14,7 +14,6 @@ import { Navbar, Form, FormControl, Button, Row } from 'react-bootstrap'
 export default function Header() {
   return (
     <>
-    <Row>
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="#home">PetCodes</Navbar.Brand>
       <Form inline>
@@ -22,7 +21,6 @@ export default function Header() {
         <Button variant="outline-info">Buscar</Button>
       </Form>
     </Navbar>
-    </Row>
     </>
   );
 }

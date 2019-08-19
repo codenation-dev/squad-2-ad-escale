@@ -1,11 +1,9 @@
-// pagina home(inicial)
-
 // inspiração https://www.petfinder.com/
-
 import React from 'react';
-import data from '../../data/pet.json';
+// Requisições HTTP
+//import data from '../../data/pet.json';
 import axios from 'axios';
-
+// Estilos
 // Importações bootstrap
 import { Container, Row } from 'react-bootstrap'
 
@@ -55,7 +53,6 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
-        <div className="row">
           <Container>
             <Row>
               <Header />
@@ -63,12 +60,16 @@ export default class Home extends React.Component {
             <Row>
               <HomeSlider />
             </Row>
-            
-            <HomeFilter handle={this.handleButtons} />
-            <HomeContent pets={this.state.filteredPets} />
-            <Footer />
+            <Row>
+              <HomeFilter handle={this.handleButtons} />
+            </Row>
+            <Row>
+              <HomeContent pets={this.state.filteredPets} />
+            </Row>
+            <Row>
+              <Footer />
+            </Row>
           </Container>
-        </div>
       </>
     );
   }

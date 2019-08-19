@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 /* Componente de filtro central, com as principais opções de filtro
   
@@ -15,32 +16,34 @@ import React from 'react';
 export default function HomeFilter({ handle }) {
   return (
     <>
-      <nav>
-        <button
-          onClick={e => {
-            handle(e);
-          }}
-          value="achados"
-        >
-          Achados
-        </button>
-        <button
-          onClick={e => {
-            handle(e);
-          }}
-          value="perdidos"
-        >
-          Perdidos
-        </button>
-        <button
-          onClick={e => {
-            handle(e);
-          }}
-          value="adocao"
-        >
-          Adoção
-        </button>
-      </nav>
+      <div className="d-flex flex-column">
+        <ButtonGroup size="lg">
+          <Button
+            onClick={e => {
+              handle(e);
+            }}
+            value="achados"
+          >
+            Achados
+          </Button>
+          <Button
+            onClick={e => {
+              handle(e);
+            }}
+            value="perdidos"
+          >
+            Perdidos
+          </Button>
+          <Button
+            onClick={e => {
+              handle(e);
+            }}
+            value="adocao"
+          >
+            Adoção
+          </Button>
+        </ButtonGroup>
+      </div>
     </>
   );
 }
