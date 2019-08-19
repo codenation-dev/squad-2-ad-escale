@@ -22,11 +22,11 @@ export default class Home extends React.Component {
 
   componentDidMount() {
     const endpoint = 'https://petcode.herokuapp.com/api/pet/'
-    this.handleGetUsers(endpoint)
+    this.handleGetAllPets(endpoint)
 
   }
 
-  handleGetUsers = async (endpoint) => {
+  handleGetAllPets = async (endpoint) => {
     try{
       await axios
         .get(endpoint)
@@ -46,13 +46,7 @@ export default class Home extends React.Component {
   }
 
   handleButtons = e => {
-    let filteredPets = [...this.state.pets];
-    filteredPets = filteredPets.filter(item => {
-      return item.status === e.target.value;
-    });
-    this.setState({
-      filteredPets: filteredPets,
-    });
+ 
   };
 
   render() {
