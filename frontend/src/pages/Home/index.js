@@ -4,6 +4,7 @@
 
 import React from 'react';
 import data from '../../data/pet.json';
+import axios from 'axios';
 
 // importação dos componentes
 import Footer from '../../components/footer';
@@ -19,11 +20,29 @@ export default class Home extends React.Component {
     filteredPets: [],
   };
 
-  componentWillMount() {
-    this.setState({
-      pets: [...data],
-      filteredPets: [...data],
-    });
+  componentDidMount() {
+    const endpoint = 'https://petcode.herokuapp.com/api/pet/'
+    this.handleGetUsers(endpoint)
+
+  }
+
+  handleGetUsers = async (endpoint) => {
+    try{
+      await axios
+        .get(endpoint)
+        .then(response => {
+          this.setState({
+            pets: response.data,
+          })
+        })
+        .then(()=>{
+          this.setState({
+            filteredPets: this.state.pets
+          })
+        })
+    }catch(e){
+      alert(e)
+    }
   }
 
   handleButtons = e => {
