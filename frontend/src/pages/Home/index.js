@@ -5,6 +5,9 @@
 import React from 'react';
 import data from '../../data/pet.json';
 
+// Importações bootstrap
+import { Container, Row } from 'react-bootstrap'
+
 // importação dos componentes
 import Footer from '../../components/footer';
 import Header from '../../components/header';
@@ -40,11 +43,18 @@ export default class Home extends React.Component {
     return (
       <>
         <div className="row">
-          <Header />
-          <HomeSlider />
-          <HomeFilter handle={this.handleButtons} />
-          <HomeContent pets={this.state.filteredPets} />
-          <Footer />
+          <Container>
+            <Row>
+              <Header />
+            </Row>
+            <Row>
+              <HomeSlider />
+            </Row>
+            
+            <HomeFilter handle={this.handleButtons} />
+            <HomeContent pets={this.state.filteredPets} />
+            <Footer />
+          </Container>
         </div>
       </>
     );
