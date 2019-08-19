@@ -1,10 +1,11 @@
-// pagina home(inicial)
-
 // inspiração https://www.petfinder.com/
-
 import React from 'react';
-import data from '../../data/pet.json';
+// Requisições HTTP
+//import data from '../../data/pet.json';
 import axios from 'axios';
+// Estilos
+// Importações bootstrap
+import { Container } from 'react-bootstrap';
 
 // importação dos componentes
 import Footer from '../../components/footer';
@@ -21,44 +22,50 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    const endpoint = 'https://petcode.herokuapp.com/api/pet/'
-    this.handleGetAllPets(endpoint)
-
+    const endpoint = 'https://petcode.herokuapp.com/api/pet/';
+    this.handleGetAllPets(endpoint);
   }
 
-  handleGetAllPets = async (endpoint) => {
-    try{
+  handleGetAllPets = async endpoint => {
+    try {
       await axios
         .get(endpoint)
         .then(response => {
           this.setState({
             pets: response.data,
-          })
+          });
         })
-        .then(()=>{
+        .then(() => {
           this.setState({
-            filteredPets: this.state.pets
-          })
-        })
-    }catch(e){
-      alert(e)
+            filteredPets: this.state.pets,
+          });
+        });
+    } catch (e) {
+      alert(e);
     }
-  }
+  };
 
   handleButtons = e => {
- 
+    let tempArrayPets = this.state.pets.filter(item => {
+      let name = e.target.name.toUpperCase();
+      return item.category.toUpperCase().includes(name);
+    });
+
+    this.setState({
+      filteredPets: tempArrayPets,
+    });
   };
 
   render() {
     return (
       <>
-        <div className="row">
+        <Container>
           <Header />
           <HomeSlider />
           <HomeFilter handle={this.handleButtons} />
           <HomeContent pets={this.state.filteredPets} />
           <Footer />
-        </div>
+        </Container>
       </>
     );
   }
