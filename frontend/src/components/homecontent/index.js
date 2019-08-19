@@ -6,7 +6,7 @@ export default function HomeContent({ pets }) {
     <>
       {pets.map(item => {
         return (
-          <h1>{`${item.especie}, ${item.nome}, ${item.raca}, ${item.status}.`}</h1>
+          <h1>{`${item.name}, ${item.size}, ${item.category}, ${item.city} .`}</h1>
         );
       })}
     </>
