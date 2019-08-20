@@ -1,16 +1,14 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
-export default function FooterNav() {
+export default function FooterNav({ classNameProp }) {
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <h1>FooterNav</h1>
-          </Col>
-        </Row>
-      </Container>
+      <Row className={classNameProp}>
+        <Col>
+          <h1>FooterNav</h1>
+        </Col>
+      </Row>
     </>
   );
 }
