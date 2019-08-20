@@ -17,7 +17,7 @@ export default function HomeFilter({ handle }) {
   return (
     <>
       <Container>
-        <Row>
+        <Row noGutters>
           <div className="d-flex flex-column">
             <ButtonGroup size="lg">
               <Button
