@@ -59,13 +59,11 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
-        <Container>
-          <Header />
-          <HomeSlider />
-          <HomeFilter handle={this.handleButtons} />
-          <HomeContent pets={this.state.filteredPets} />
-          <Footer />
-        </Container>
+        <Header />
+        <HomeSlider />
+        <HomeFilter handle={this.handleButtons} />
+        <HomeContent pets={this.state.filteredPets} />
+        <Footer />
       </>
     );
   }
