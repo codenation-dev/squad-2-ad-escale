@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Form, FormControl, Button, Col } from 'react-bootstrap';
+import { Navbar, Col } from 'react-bootstrap';
 
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site

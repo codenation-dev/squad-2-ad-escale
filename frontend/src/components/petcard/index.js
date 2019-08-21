@@ -5,13 +5,13 @@ import './styles.css';
 
 // Componente de footer global
 export default function Petcard({ pet }) {
-  const { image = 'image', name, description, gender, city, state, age } = pet;
+  const { image = pet3, name, description, gender, city, state, age } = pet;
   return (
     <>
       <Row>
         <Col xs className="d-flex justify-content-center">
           <Card className="PetCard" br="light" style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={pet3} />
+            <Card.Img variant="top" src={image} />
             <Card.Body>
               <Card.Title>{name}</Card.Title>
               <Card.Text>{description}</Card.Text>
