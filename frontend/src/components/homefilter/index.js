@@ -1,12 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD
 import { Button, ButtonGroup, Col, Row } from 'react-bootstrap';
 import './styles.css';
 
-=======
-import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
-import './index.css';
->>>>>>> ee7dda92f5f46a402d0cd811e2acb644eb7828bf
 /* Componente de filtro central, com as principais opções de filtro
   
   Categorias básicas
