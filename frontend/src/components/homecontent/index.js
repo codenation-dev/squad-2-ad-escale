@@ -6,7 +6,6 @@ import './index.css';
 export default function HomeContent({ pets }) {
   return (
     <>
-<<<<<<< HEAD
       <Row>
         <Col xs>
           {pets.map(pet => {
@@ -17,16 +16,6 @@ export default function HomeContent({ pets }) {
             );
           })}
         </Col>
-=======
-      <Row className="home-content">
-        {pets.map(pet => {
-          return (
-            <Col key={pet.id}>
-              <Petcard pet={pet} />
-            </Col>
-          );
-        })}
->>>>>>> ee7dda92f5f46a402d0cd811e2acb644eb7828bf
       </Row>
     </>
   );

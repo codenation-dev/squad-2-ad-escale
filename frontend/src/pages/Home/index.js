@@ -60,7 +60,6 @@ export default class Home extends React.Component {
     return (
       <>
         <Header />
-<<<<<<< HEAD
         <Container>
           <Row>
             <Col xs>
@@ -83,12 +82,6 @@ export default class Home extends React.Component {
             </Col>
           </Row>
         </Container>
-=======
-        <HomeSlider />
-        <HomeFilter handle={this.handleButtons} />
-        <HomeContent pets={this.state.filteredPets} />
-        <Footer />
->>>>>>> ee7dda92f5f46a402d0cd811e2acb644eb7828bf
       </>
     );
   }
