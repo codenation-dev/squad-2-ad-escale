@@ -1,0 +1,9 @@
+.Footer {
+    margin: 15px;
+    padding: 15px;
+    height: 80px;
+}
+
+Footer > Col {
+    margin: 10px;
+}

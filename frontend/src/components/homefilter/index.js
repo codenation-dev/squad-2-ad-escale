@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, Col, Row } from 'react-bootstrap';
+import './styles.css';
 
 /* Componente de filtro central, com as principais opções de filtro
   
@@ -16,10 +17,10 @@ import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
 export default function HomeFilter({ handle }) {
   return (
     <>
-      <Container>
-        <Row>
-          <div className="d-flex flex-column">
-            <ButtonGroup size="lg">
+      <Row>
+        <Col xs>
+          <div className="d-flex justify-content-center">
+            <ButtonGroup className="HomeFilter" size="lg">
               <Button
                 name="Encontrados"
                 onClick={e => {
@@ -46,8 +47,8 @@ export default function HomeFilter({ handle }) {
               </Button>
             </ButtonGroup>
           </div>
-        </Row>
-      </Container>
+        </Col>
+      </Row>
     </>
   );
 }
