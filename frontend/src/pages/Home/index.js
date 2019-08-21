@@ -5,7 +5,7 @@ import React from 'react';
 import axios from 'axios';
 // Estilos
 // Importações bootstrap
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 // importação dos componentes
 import Footer from '../../components/footer';
@@ -59,12 +59,28 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
+        <Header />
         <Container>
-          <Header />
-          <HomeSlider />
-          <HomeFilter handle={this.handleButtons} />
-          <HomeContent pets={this.state.filteredPets} />
-          <Footer />
+          <Row>
+            <Col xs>
+              <HomeSlider />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs>
+              <HomeFilter handle={this.handleButtons} />
+            </Col>
+          </Row>
+          <Row>
+            <Col sm>
+              <HomeContent pets={this.state.filteredPets} />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs>
+              <Footer />
+            </Col>
+          </Row>
         </Container>
       </>
     );
