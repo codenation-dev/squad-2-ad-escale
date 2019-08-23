@@ -1,6 +1,4 @@
 import React from 'react';
-import { Button, ButtonGroup, Col, Row } from 'react-bootstrap';
-import './styles.css';
 
 /* Componente de filtro central, com as principais opções de filtro
   
@@ -17,38 +15,43 @@ import './styles.css';
 export default function HomeFilter({ handle }) {
   return (
     <>
-      <Row>
-        <Col xs>
-          <div className="d-flex justify-content-center">
-            <ButtonGroup className="HomeFilter" size="lg">
-              <Button
-                name="Encontrados"
-                onClick={e => {
-                  handle(e);
-                }}
-              >
-                Achados
-              </Button>
-              <Button
-                name="Perdidos"
-                onClick={e => {
-                  handle(e);
-                }}
-              >
-                Perdidos
-              </Button>
-              <Button
-                name="Adocao"
-                onClick={e => {
-                  handle(e);
-                }}
-              >
-                Adoção
-              </Button>
-            </ButtonGroup>
-          </div>
-        </Col>
-      </Row>
+      <div
+        className="container"
+        style={{ textAlign: 'center', padding: '12px' }}
+      >
+        <div className="btn-group" role="group" aria-label="Exemplo básico">
+          <button
+            type="button"
+            className="btn btn-warning"
+            name="Encontrados"
+            onClick={e => {
+              handle(e);
+            }}
+          >
+            Achados
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            name="Perdidos"
+            onClick={e => {
+              handle(e);
+            }}
+          >
+            Perdidos
+          </button>
+          <button
+            type="button"
+            className="btn btn-info"
+            name="Adocao"
+            onClick={e => {
+              handle(e);
+            }}
+          >
+            Doação
+          </button>
+        </div>
+      </div>
     </>
   );
 }
