@@ -3,13 +3,16 @@ import { Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from './routes';
 import history from './services/history';
-//import GlobalStyle from './styles/global';
-//    <GlobalStyle />
+
+import Header from './components/header';
+import Footer from './components/footer';
 
 function App() {
   return (
     <Router history={history}>
+      <Header />
       <Routes />
+      <Footer />
     </Router>
   );
 }

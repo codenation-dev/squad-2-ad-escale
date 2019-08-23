@@ -12,12 +12,10 @@ export const Container = styled.div`
   width: 100%;
   max-width: 350px;
   text-align: center;
-
   form {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-
     input {
       background: rgba(0, 0, 0, 0.4);
       border: 0;
@@ -26,12 +24,10 @@ export const Container = styled.div`
       padding: 0 15px;
       color: #0000cd;
       margin: 0 0 10px;
-
       &::placeholder {
         color: rgba(255, 255, 255, 0.7);
       }
     }
-
     button {
       margin: 5px 0 0;
       height: 44px;
@@ -41,7 +37,6 @@ export const Container = styled.div`
       border-radius: 4px;
       font-size: 16px;
     }
-
     a {
       color: #0000cd;
       margin-top: 15px;

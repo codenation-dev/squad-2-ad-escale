@@ -3,11 +3,7 @@ import axios from 'axios';
 
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
 
-import './styles.css';
-
-import Header from '../../components/header';
 import AddPet from '../../components/addpet';
-import Footer from '../../components/footer';
 
 export default class PetProfile extends Component {
   constructor(props) {
@@ -26,19 +22,22 @@ export default class PetProfile extends Component {
 
   handleGetAllPets = async endpoint => {
     try {
-      await axios.get(endpoint).then(response => {
-        this.setState({
-          pet: response.data[4],
+      await axios
+        .get(endpoint)
+        .then(response => {
+          this.setState({
+            pet: response.data[4],
+          });
+        })
+        .then(() => {
+          this.setState({
+            image: this.state.pet.images,
+          });
         });
-      }).then(() => {
-        this.setState({
-          image: this.state.pet.images,
-        });
-      });
     } catch (e) {
       alert(e);
     }
-    console.log(this.state.pet.size)
+    console.log(this.state.pet.size);
   };
 
   formatDate(string) {
@@ -49,24 +48,22 @@ export default class PetProfile extends Component {
   }
 
   render() {
-    const images = this.state.image.map(image =>
-    <Carousel.Item>
-      <img
-        className="d-block w-100"
-        height="400px"
-        src={image.image}
-        alt="fotos_pet"
-      />
-    </Carousel.Item>);
+    const images = this.state.image.map(image => (
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          height="400px"
+          src={image.image}
+          alt="fotos_pet"
+        />
+      </Carousel.Item>
+    ));
 
     return (
       <>
-        <Header />
         <Container>
           <Col xs>
-            <Carousel className="Carrousel">
-              {images}
-            </Carousel>
+            <Carousel className="Carrousel">{images}</Carousel>
           </Col>
           <h1>{this.state.pet.name}</h1>
           <Row>
@@ -107,7 +104,6 @@ export default class PetProfile extends Component {
         </Container>
 
         <AddPet></AddPet>
-        <Footer />
       </>
     );
   }

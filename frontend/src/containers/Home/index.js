@@ -45,6 +45,10 @@ export default class Home extends React.Component {
     }
   };
 
+  handleAllFilters = e => {
+    let tempArrayPets = this.state.pets.filter(item => {});
+  };
+
   handleButtons = e => {
     let tempArrayPets = this.state.pets.filter(item => {
       let name = e.target.name.toUpperCase();
@@ -59,7 +63,6 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
-        <Header />
         <Container>
           <Row>
             <Col xs>
@@ -74,11 +77,6 @@ export default class Home extends React.Component {
           <Row>
             <Col sm>
               <HomeContent pets={this.state.filteredPets} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs>
-              <Footer />
             </Col>
           </Row>
         </Container>
