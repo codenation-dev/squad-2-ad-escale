@@ -1,29 +1,28 @@
 import React from 'react';
-import { Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import pet3 from '../../data/pet3.jpg';
-import './styles.css';
 
 // Componente de footer global
 export default function Petcard({ pet }) {
   const { image = pet3, name, description, gender, city, state, age } = pet;
   return (
     <>
-      <Row>
-        <Col xs className="d-flex justify-content-center">
-          <Card className="PetCard" br="light" style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={image} />
-            <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Text>{description}</Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>{gender}</ListGroupItem>
-              <ListGroupItem>{`${city}, ${state}`}</ListGroupItem>
-              <ListGroupItem>{age}</ListGroupItem>
-            </ListGroup>
-          </Card>
-        </Col>
-      </Row>
+      <div className="col-12 col-sm-4" style={{ paddingTop: '7px' }}>
+        <div className="card">
+          <img
+            className="card-img-top rounded mx-auto d-block"
+            style={{ paddingTop: '5px', width: '100px', heigt: '100px' }}
+            src="pet3"
+            alt="Card image cap"
+          />
+          <div className="card-block">
+            <h4 className="card-title">{name}</h4>
+            <p className="card-text">{description}</p>
+            {/* <button className="btn btn-primary" onClick={props.action}>
+              {name}
+            </button> */}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
