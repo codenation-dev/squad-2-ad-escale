@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site
  
@@ -14,7 +13,7 @@ export default function Header() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="#" style={{ paddingLeft: '20px' }}>
           Petcodes
         </a>
         <button
