@@ -13,54 +13,60 @@ import pet3 from '../../data/pet3.jpg';
 export default function HomeSlider() {
   return (
     <>
-      <div
-        id="carouselExampleControls"
-        className="carousel slide"
-        data-ride="carousel"
-      >
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img
-              className="d-block w-100"
-              src={pet1}
-              alt="Primeiro Slide"
-            ></img>
+      <div className="container" style={{ margin: '1rem' }}>
+        <div
+          id="carouselExampleControls"
+          className="carousel slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                className="d-block w-100"
+                src={pet1}
+                alt="Primeiro Slide"
+              ></img>
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src={pet2}
+                alt="Segundo Slide"
+              ></img>
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src={pet3}
+                alt="Terceiro Slide"
+              ></img>
+            </div>
           </div>
-          <div className="carousel-item">
-            <img className="d-block w-100" src={pet2} alt="Segundo Slide"></img>
-          </div>
-          <div className="carousel-item">
-            <img
-              className="d-block w-100"
-              src={pet3}
-              alt="Terceiro Slide"
-            ></img>
-          </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Anterior</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Próximo</span>
+          </a>
         </div>
-        <a
-          className="carousel-control-prev"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="sr-only">Anterior</span>
-        </a>
-        <a
-          className="carousel-control-next"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="sr-only">Próximo</span>
-        </a>
       </div>
     </>
   );
