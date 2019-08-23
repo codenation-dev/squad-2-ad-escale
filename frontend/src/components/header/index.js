@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site
  
@@ -30,11 +31,26 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <Link to="/" className="nav-link" href="#">
                 Home <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item active">
+              <Link to="/signin" className="nav-link" href="#">
+                SignIn <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/signup" className="nav-link" href="#">
+                SignUp <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link to="/userprofile" className="nav-link" href="#">
+                Meu Perfil <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            {/* <li className="nav-item">
               <a className="nav-link" href="#">
                 Link
               </a>
@@ -73,7 +89,7 @@ export default function Header() {
               >
                 Disabled
               </a>
-            </li>
+            </li> */}
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
