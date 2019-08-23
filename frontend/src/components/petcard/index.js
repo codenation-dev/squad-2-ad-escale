@@ -1,5 +1,6 @@
 import React from 'react';
 import pet3 from '../../data/pet3.jpg';
+import { Link } from 'react-router-dom';
 
 // Componente pet
 export default function Petcard({ pet }) {
@@ -21,9 +22,11 @@ export default function Petcard({ pet }) {
             <p className="card-text" style={{ margin: '0 1rem 1rem 1rem' }}>
               "Olá, tudo bem"
             </p>
-            <button className="btn btn-primary" style={{ margin: '1rem' }}>
-              Conhecer
-            </button>
+            <Link to="/petprofile">
+              <button className="btn btn-primary" style={{ margin: '1rem' }}>
+                Conhecer
+              </button>
+            </Link>
           </div>
         </div>
       </div>
