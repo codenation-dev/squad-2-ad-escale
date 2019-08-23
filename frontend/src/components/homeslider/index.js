@@ -15,18 +15,26 @@ export default function HomeSlider() {
     <>
       <div
         id="carouselExampleControls"
-        class="carousel slide carousel-fade"
+        className="carousel slide"
         data-ride="carousel"
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="d-block w-100" src={pet1} alt="Primeiro Slide" />
+            <img
+              className="d-block w-100"
+              src={pet1}
+              alt="Primeiro Slide"
+            ></img>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100" src={pet2} alt="Segundo Slide" />
+            <img className="d-block w-100" src={pet2} alt="Segundo Slide"></img>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100" src={pet3} alt="Terceiro Slide" />
+            <img
+              className="d-block w-100"
+              src={pet3}
+              alt="Terceiro Slide"
+            ></img>
           </div>
         </div>
         <a
