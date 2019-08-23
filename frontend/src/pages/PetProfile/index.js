@@ -6,6 +6,7 @@ import { Container, Row, Col, Carousel } from 'react-bootstrap';
 import './styles.css';
 
 import Header from '../../components/header';
+import AddPet from '../../components/addpet';
 import Footer from '../../components/footer';
 
 export default class PetProfile extends Component {
@@ -27,18 +28,20 @@ export default class PetProfile extends Component {
     try {
       await axios.get(endpoint).then(response => {
         this.setState({
-          pet: response.data[0],
-          //images: this.pet.images,
+          pet: response.data[4],
+        });
+      }).then(() => {
+        this.setState({
+          image: this.state.pet.images,
         });
       });
     } catch (e) {
       alert(e);
     }
-    console.log(this.state.pet);
+    console.log(this.state.pet.size)
   };
 
   formatDate(string) {
-    console.log(string);
     const mes = new Date(string).getDay();
     const dia = new Date(string).getDate();
     const ano = new Date(string).getFullYear();
@@ -46,32 +49,23 @@ export default class PetProfile extends Component {
   }
 
   render() {
+    const images = this.state.image.map(image =>
+    <Carousel.Item>
+      <img
+        className="d-block w-100"
+        height="400px"
+        src={image.image}
+        alt="fotos_pet"
+      />
+    </Carousel.Item>);
+
     return (
       <>
         <Header />
         <Container>
           <Col xs>
             <Carousel className="Carrousel">
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  height="400px"
-                  src={
-                    'http://www.petretrato.com.br/imagens/conteudo/images/destaques/suri_fevereiro14_2.jpg'
-                  }
-                  alt="slide 1"
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  height="400px"
-                  src={
-                    'http://www.petretrato.com.br/imagens/conteudo/images/destaques/suri_fevereiro14_4.jpg'
-                  }
-                  alt="slide 2"
-                />
-              </Carousel.Item>
+              {images}
             </Carousel>
           </Col>
           <h1>{this.state.pet.name}</h1>
@@ -86,11 +80,11 @@ export default class PetProfile extends Component {
                   : 'Perdidos'}
               </h5>
               <p>{this.state.pet.pet_type === 1 ? 'Cachorro' : 'Gato'}</p>
-              <p>{this.state.pet.gender === 1 ? 'Macho' : 'Fêmea'}</p>
+              <p>{this.state.pet.gender === '1' ? 'Macho' : 'Fêmea'}</p>
               <p>
-                {this.state.pet.size === 0
+                {this.state.pet.size === '0'
                   ? 'Pequeno'
-                  : this.state.pet.size === 1
+                  : this.state.pet.size === '1'
                   ? 'Médio'
                   : 'Grande'}
               </p>
@@ -112,6 +106,7 @@ export default class PetProfile extends Component {
           </Row>
         </Container>
 
+        <AddPet></AddPet>
         <Footer />
       </>
     );
