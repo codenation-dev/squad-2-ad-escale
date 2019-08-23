@@ -1,22 +1,20 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
 import Petcard from '../petcard';
-import './index.css';
 
 export default function HomeContent({ pets }) {
   return (
     <>
-      <Row>
-        <Col xs>
+      <div className="container">
+        <div className="row">
           {pets.map(pet => {
             return (
-              <Col key={pet.id}>
+              <div className="col-sm" key={pet.id}>
                 <Petcard pet={pet} />
-              </Col>
+              </div>
             );
           })}
-        </Col>
-      </Row>
+        </div>
+      </div>
     </>
   );
 }
