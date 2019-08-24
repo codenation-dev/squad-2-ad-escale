@@ -63,21 +63,25 @@ class SignUp extends Component {
             </h1>
             <form onSubmit={this.handleSignUp}>
               <input
+                required
                 type="text"
                 placeholder="Usuário"
                 onChange={e => this.setState({ username: e.target.value })}
               />
               <input
+                required
                 type="email"
                 placeholder="Email"
                 onChange={e => this.setState({ email: e.target.value })}
               />
               <input
+                required
                 type="password"
                 placeholder="Senha"
                 onChange={e => this.setState({ password: e.target.value, invalidPasswordError: '' })}
               />
               <input
+                required
                 type="password"
                 placeholder="Confirme a Senha"
                 onChange={e => this.setState({ confirmPassword: e.target.value, invalidPasswordError: '' })}

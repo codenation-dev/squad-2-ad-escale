@@ -48,11 +48,13 @@ class SignIn extends Component {
             </h1>
             <form onSubmit={this.handleSignIn}>
               <input
+                required
                 type="username"
                 placeholder="Usuário"
                 onChange={e => this.setState({ username: e.target.value })}
               />
               <input
+                required
                 type="password"
                 placeholder="Senha"
                 onChange={e => this.setState({ password: e.target.value })}
