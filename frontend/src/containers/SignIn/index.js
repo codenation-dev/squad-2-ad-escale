@@ -71,12 +71,14 @@ class SignIn extends Component {
             <form onSubmit={this.handleSignIn}>
               <input
                 value={username}
+                required
                 type="username"
                 placeholder="Usuário"
                 onChange={e => this.handleChangeUsername(e.target.value)}
               />
               <input
                 value={password}
+                required
                 type="password"
                 placeholder="Senha"
                 onChange={e => this.handleChangePassword(e.target.value)}

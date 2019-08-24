@@ -13,6 +13,7 @@ class SignUp extends Component {
     password: '',
     confirmPassword: '',
     error: '',
+    invalidPasswordError: ''
   };
 
   handleSignUp = async e => {
@@ -42,11 +43,16 @@ class SignUp extends Component {
         this.props.history.push('/signin');
       } catch (err) {
         console.log(err);
-        this.setState({ error: 'Ocorreu um erro ao logar' });
+        if(err && err.response) {
+          const invalidPasswordError = err.response.data && err.response.data.password[0];
+          return this.setState({ invalidPasswordError });
+        }
+        return this.setState({ error: err });
       }
     }
   };
   render() {
+    const {invalidPasswordError} = this.state;
     return (
       <>
         <Wrapper>
@@ -57,26 +63,31 @@ class SignUp extends Component {
             </h1>
             <form onSubmit={this.handleSignUp}>
               <input
+                required
                 type="text"
                 placeholder="Usuário"
                 onChange={e => this.setState({ username: e.target.value })}
               />
               <input
+                required
                 type="email"
                 placeholder="Email"
                 onChange={e => this.setState({ email: e.target.value })}
               />
               <input
+                required
                 type="password"
                 placeholder="Senha"
-                onChange={e => this.setState({ password: e.target.value })}
+                onChange={e => this.setState({ password: e.target.value, invalidPasswordError: '' })}
               />
               <input
+                required
                 type="password"
                 placeholder="Confirme a Senha"
-                onChange={e => this.setState({ confirmPassword: e.target.value })}
+                onChange={e => this.setState({ confirmPassword: e.target.value, invalidPasswordError: '' })}
               />
 
+              <span style={{color:"red"}}>{invalidPasswordError}</span>
               <button type="submit">Criar Conta</button>
               <Link to="/signin">Já tenho Cadastro</Link>
             </form>
