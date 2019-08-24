@@ -11,8 +11,12 @@ import HomeContent from '../../components/homecontent';
 import HomeSlider from '../../components/homeslider';
 import HomeFilter from '../../components/homefilter';
 
+import { handleGetPets, handleGetFilteredPets } from './actions';
+
+import { connect } from 'react-redux';
+
 // Componente página Home que renderiza os componentes menores
-export default class Home extends React.Component {
+class Home extends React.Component {
   state = {
     pets: [],
     filteredPets: [],
@@ -46,15 +50,13 @@ export default class Home extends React.Component {
     let tempArrayPets = this.state.pets.filter(item => {});
   };
 
-  handleButtons = e => {
-    let tempArrayPets = this.state.pets.filter(item => {
-      let name = e.target.name.toUpperCase();
-      return item.category.toUpperCase().includes(name);
-    });
-
-    this.setState({
-      filteredPets: tempArrayPets,
-    });
+  handleFilterAchados = e => {
+    axios
+      .get('https://petcode.herokuapp.com/api/pet/?category=ENCONTRADOS')
+      .then(response => {
+        const achados = response.data;
+        this.props.dispatch(handleGetFilteredPets(achados));
+      });
   };
 
   render() {
@@ -68,12 +70,12 @@ export default class Home extends React.Component {
           </div>
           <div className="Row">
             <div className="Col">
-              <HomeFilter handle={this.handleButtons} />
+              <HomeFilter handle={this.handleFilterAchados} />
             </div>
           </div>
           <div className="Row">
             <div className="Col">
-              <HomeContent pets={this.state.filteredPets} />
+              <HomeContent pets={this.props.filteredPets} />
             </div>
           </div>
         </div>
@@ -81,3 +83,13 @@ export default class Home extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  console.log('mapStateToProps', state);
+  return {
+    pets: state.home.pets,
+    filteredPets: state.home.filteredPets,
+  };
+}
+
+export default connect(mapStateToProps)(Home);

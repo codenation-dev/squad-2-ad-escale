@@ -11,9 +11,11 @@
     "react-bootstrap": "^1.0.0-beta.11",
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
+    "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-swift-slider": "^6.3.0",
+    "redux": "^4.0.4",
     "styled-components": "^4.3.2"
   },
   "scripts": {
