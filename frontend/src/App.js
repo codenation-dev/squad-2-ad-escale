@@ -10,6 +10,11 @@ import Footer from './components/footer';
 
 function App() {
   return (
+    /**
+     * Provider é o componente pai que vai abrigar a store
+     * e encapsular toda a aplicação para permitir que todos os componentes
+     * possam utiliza-lá
+     */
     <Provider store={store}>
       <Router history={history}>
         <Header />

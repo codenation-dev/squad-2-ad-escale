@@ -1,15 +1,12 @@
 import * as types from './types';
 
-export function handleGetPets(pets) {
+/**
+ * função que popula o state pets na store do redux,
+ * recebe um payload que no caso vai ser o objeto pets vindo de quem disparou a action
+ */
+export function fillPets(pets) {
   return {
-    type: types.GET_PETS,
-    payload: pets,
-  };
-}
-
-export function handleGetFilteredPets(pets) {
-  return {
-    type: types.GET_FILTERED_PETS,
+    type: types.FILL_PETS,
     payload: pets,
   };
 }
