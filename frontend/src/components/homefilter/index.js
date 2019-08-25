@@ -1,9 +1,9 @@
 import React from 'react';
 
 /* Componente de filtro central, com as principais opções de filtro
-  
+
   Categorias básicas
-  
+
   - Achados
   - Perdidos
   - Adoção
@@ -12,7 +12,11 @@ import React from 'react';
 
 
 */
-export default function HomeFilter({ handle }) {
+export default function HomeFilter({
+  handleAchados,
+  handleAdocao,
+  handlePerdidos,
+}) {
   return (
     <>
       <div
@@ -25,7 +29,7 @@ export default function HomeFilter({ handle }) {
             className="btn btn-warning"
             name="Encontrados"
             onClick={e => {
-              handle(e);
+              handleAchados(e);
             }}
           >
             Achados
@@ -35,7 +39,7 @@ export default function HomeFilter({ handle }) {
             className="btn btn-danger"
             name="Perdidos"
             onClick={e => {
-              handle(e);
+              handlePerdidos(e);
             }}
           >
             Perdidos
@@ -45,10 +49,10 @@ export default function HomeFilter({ handle }) {
             className="btn btn-info"
             name="Adocao"
             onClick={e => {
-              handle(e);
+              handleAdocao(e);
             }}
           >
-            Doação
+            Adoação
           </button>
         </div>
       </div>

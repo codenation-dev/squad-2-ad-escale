@@ -59,6 +59,24 @@ class Home extends React.Component {
       });
   };
 
+  handleFilterPerdidos = e => {
+    axios
+      .get('https://petcode.herokuapp.com/api/pet/?category=PROCURA_SE')
+      .then(response => {
+        const perdidos = response.data;
+        this.props.dispatch(handleGetFilteredPets(perdidos));
+      });
+  };
+
+  handleFilterAdocao = e => {
+    axios
+      .get('https://petcode.herokuapp.com/api/pet/?category=ADOCAO')
+      .then(response => {
+        const adocao = response.data;
+        this.props.dispatch(handleGetFilteredPets(adocao));
+      });
+  };
+
   render() {
     return (
       <>
@@ -70,7 +88,10 @@ class Home extends React.Component {
           </div>
           <div className="Row">
             <div className="Col">
-              <HomeFilter handle={this.handleFilterAchados} />
+              <HomeFilter handleAchados={this.handleFilterAchados}
+              handleAdocao={this.handleFilterAdocao}
+              handlePerdidos={this.handleFilterPerdidos}
+              />
             </div>
           </div>
           <div className="Row">

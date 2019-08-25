@@ -11,7 +11,7 @@ import SignUp from './containers/SignUp';
 export default function Routes() {
   return (
     <Switch>
-      <Route exact path="/" exact component={Home} />
+      <Route exact path="/" component={Home} />
       <Route path="/petprofile" component={PetProfile} />
       <Route path="/userprofile" component={UserProfile} />
       <Route path="/signin" component={SignIn} />
