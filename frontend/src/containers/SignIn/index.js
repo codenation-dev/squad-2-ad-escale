@@ -1,41 +1,35 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { IoMdPaw } from 'react-icons/io'; // importação do icone pet de uma biblioteca
-import { Wrapper, Container } from './styles';
+
 import {
-  handleChangeUsername,
-  handleChangePassword,
-  handleGetToken,
+  handleUsername,
+  handlePassword,
+  handleToken,
+  handleError,
 } from './actions';
 
-import axios from 'axios';
-
 class SignIn extends Component {
-  state = {
-    username: '',
-    password: '',
-    token: '',
-    error: '',
-  };
-
   handleChangeUsername = value => {
-    this.props.dispatch(handleChangeUsername(value));
+    this.props.dispatch(handleUsername(value));
   };
-
   handleChangePassword = value => {
-    this.props.dispatch(handleChangePassword(value));
+    this.props.dispatch(handlePassword(value));
   };
-
   handleGetToken = value => {
-    this.props.dispatch(handleGetToken(value));
+    this.props.dispatch(handleToken(value));
+  };
+  handleGetError = value => {
+    this.props.dispatch(handleError(value));
   };
 
   handleSignIn = async e => {
     e.preventDefault();
     const { username, password } = this.props;
     if (!username || !password) {
-      this.setState({ error: 'Preencha todos os dados para logar' });
+      this.handleGetError('Preencha todos os dados para logar');
     } else {
       try {
         await axios
@@ -44,62 +38,117 @@ class SignIn extends Component {
             password,
           })
           .then(response => {
-            const login_res = response.data;
-            this.props.dispatch(handleGetToken(login_res.token));
-            //this.setState({ ...this.state, token: login_res.token });
-
-            return this.state.token;
+            const token = response.data.token;
+            this.handleGetToken(token);
+            this.handleGetError('');
           });
-        //this.props.history.push('/');
+        this.props.history.push('/');
       } catch (err) {
-        console.log(err);
-        this.setState({ error: 'Ocorreu um erro ao logar' });
+        this.handleGetError('Ocorreu um erro ao logar');
       }
     }
   };
+
   render() {
-    console.log(this.props);
-    const { username, password, loading } = this.props;
+    const { username, password, error } = this.props;
+
     return (
       <>
-        <Wrapper>
-          <Container>
-            <h1>
-              <IoMdPaw size="135" />
+        <div className="container">
+          <div className="row" style={{ marginTop: '1rem' }}>
+            <div className="col">
+              {error !== '' ? (
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  role="alert"
+                >
+                  {error}
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+          </div>
+          <div className="row">
+            <div className="img-fluid rounded mx-auto d-block">
+              <IoMdPaw class="img-fluid" size="135" />
               <h2>Pet Codes</h2>
-            </h1>
-            <form onSubmit={this.handleSignIn}>
-              <input
-                value={username}
-                required
-                type="username"
-                placeholder="Usuário"
-                onChange={e => this.handleChangeUsername(e.target.value)}
-              />
-              <input
-                value={password}
-                required
-                type="password"
-                placeholder="Senha"
-                onChange={e => this.handleChangePassword(e.target.value)}
-              />
-
-              <button type="submit">Login</button>
-              <Link to="/signup">Criar Conta</Link>
-            </form>
-          </Container>
-        </Wrapper>
+            </div>
+          </div>
+          <div className="row" style={{ marginTop: '1rem' }}>
+            <div className="col">
+              <form onSubmit={this.handleSignIn}>
+                <div className="row">
+                  <div className="col">
+                    <div class="form-group">
+                      <input
+                        className="form-control form-control-lg"
+                        value={username}
+                        required
+                        type="username"
+                        placeholder="Usuário"
+                        onChange={e =>
+                          this.handleChangeUsername(e.target.value)
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <div class="form-group">
+                      <input
+                        className="form-control form-control-lg"
+                        value={password}
+                        required
+                        type="password"
+                        placeholder="Senha"
+                        onChange={e =>
+                          this.handleChangePassword(e.target.value)
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-dark">
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <div class="form-group">
+                      <Link to="/signup">Criar Conta</Link>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log('mapStateToProps', state);
   return {
     username: state.signin.username,
     password: state.signin.password,
-    loading: state.loading,
+    token: state.signin.token,
+    error: state.signin.error,
   };
 }
 

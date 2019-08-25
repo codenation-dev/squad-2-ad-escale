@@ -22,21 +22,21 @@ export default function HomeSlider() {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                className="d-block w-100"
+                className="img-fluid rounded mx-auto d-block"
                 src={pet1}
                 alt="Primeiro Slide"
               ></img>
             </div>
             <div className="carousel-item">
               <img
-                className="d-block w-100"
+                className="img-fluid rounded mx-auto d-block"
                 src={pet2}
                 alt="Segundo Slide"
               ></img>
             </div>
             <div className="carousel-item">
               <img
-                className="d-block w-100"
+                className="img-fluid rounded mx-auto d-block"
                 src={pet3}
                 alt="Terceiro Slide"
               ></img>
