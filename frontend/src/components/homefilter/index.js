@@ -12,11 +12,7 @@ import React from 'react';
 
 
 */
-export default function HomeFilter({
-  handleAchados,
-  handleAdocao,
-  handlePerdidos,
-}) {
+export default function HomeFilter({ handleGetFilteredPets }) {
   return (
     <>
       <div
@@ -27,9 +23,9 @@ export default function HomeFilter({
           <button
             type="button"
             className="btn btn-warning"
-            name="Encontrados"
+            name="ENCONTRADOS"
             onClick={e => {
-              handleAchados(e);
+              handleGetFilteredPets(e.target.name);
             }}
           >
             Achados
@@ -37,9 +33,9 @@ export default function HomeFilter({
           <button
             type="button"
             className="btn btn-danger"
-            name="Perdidos"
+            name="PROCURA_SE"
             onClick={e => {
-              handlePerdidos(e);
+              handleGetFilteredPets(e.target.name);
             }}
           >
             Perdidos
@@ -47,9 +43,9 @@ export default function HomeFilter({
           <button
             type="button"
             className="btn btn-info"
-            name="Adocao"
+            name="ADOCAO"
             onClick={e => {
-              handleAdocao(e);
+              handleGetFilteredPets(e.target.name);
             }}
           >
             Adoação
