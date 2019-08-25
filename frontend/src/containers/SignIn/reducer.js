@@ -3,8 +3,8 @@ import * as types from './types';
 const INITIAL_STATE = {
   username: '',
   password: '',
-  loading: false,
   token: '',
+  error: '',
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -22,10 +22,16 @@ export default function reducer(state = INITIAL_STATE, action) {
         password: action.payload,
       };
     }
-    case types.GET_TOKEN: {
+    case types.FILL_TOKEN: {
       return {
         ...state,
         token: action.payload,
+      };
+    }
+    case types.FILL_ERROR: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
 

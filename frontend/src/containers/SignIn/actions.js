@@ -1,23 +1,29 @@
 import * as types from './types';
 
-export function handleChangeUsername(name) {
+export function handleUsername(username) {
   return {
     type: types.CHANGE_USERNAME,
-    payload: name,
+    payload: username,
   };
 }
 
-export function handleChangePassword(pass) {
+export function handlePassword(password) {
   return {
     type: types.CHANGE_PASSWORD,
-    payload: pass,
+    payload: password,
   };
 }
 
-export function handleGetToken(token) {
-  console.log(token);
+export function handleToken(token) {
   return {
-    type: types.GET_TOKEN,
+    type: types.FILL_TOKEN,
     payload: token,
+  };
+}
+
+export function handleError(error) {
+  return {
+    type: types.FILL_ERROR,
+    payload: error,
   };
 }
