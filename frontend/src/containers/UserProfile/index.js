@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { IoIosPerson } from 'react-icons/io';
 
 import {
@@ -39,6 +39,11 @@ class UserProfile extends React.Component {
     }
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.handleGetError('A funcionalidade ainda não está implementada.');
+  };
+
   componentDidMount() {
     this.handleGetUserLogged();
   }
@@ -49,76 +54,95 @@ class UserProfile extends React.Component {
       <>
         <div className="container">
           <div className="row">
-            <div className="col">
-              {token !== ''
-                ? `username: ${username}, password: ${password}, email: ${email}`
-                : ''}
-            </div>
+            {token !== '' ? '' : <Redirect to="/signin" />}
           </div>
-        </div>
-        {/* <div className="container">
           <div className="row">
             <div className="img-fluid rounded mx-auto d-block">
               <IoIosPerson class="img-fluid" size="135" />
-              <h2>{username !== '' ? username : 'username'}</h2>
             </div>
           </div>
-
-          <div className="row" style={{ marginTop: '1rem' }}>
+          <div className="row" style={{ padding: '1rem' }}>
             <div className="col">
-              <form onSubmit={this.handleSignIn}>
-                <div className="row">
-                  <div className="col">
-                    <div class="form-group">
-                      <input
-                        className="form-control form-control-lg"
-                        value={username}
-                        required
-                        type="username"
-                        placeholder="Usuário"
-                        onChange={e =>
-                          this.handleChangeUsername(e.target.value)
-                        }
-                      />
-                    </div>
-                  </div>
+              <form>
+                <div className="form-group">
+                  <label>E-mail:</label>
+                  <input
+                    value={email}
+                    type="text"
+                    className="form-control"
+                    readonly
+                  />
                 </div>
-                <div className="row">
-                  <div className="col">
-                    <div class="form-group">
-                      <input
-                        className="form-control form-control-lg"
-                        value={password}
-                        required
-                        type="password"
-                        placeholder="Senha"
-                        onChange={e =>
-                          this.handleChangePassword(e.target.value)
-                        }
-                      />
-                    </div>
-                  </div>
+                <div className="form-group">
+                  <label>Username:</label>
+                  <input value={username} className="form-control" readonly />
                 </div>
-                <div className="row">
-                  <div className="col">
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-dark">
-                        Login
+
+                <div className="form-group">
+                  <label>Senha atual:</label>
+                  <input type="password" className="form-control" readonly />
+                </div>
+                <div className="form-group">
+                  <label forHTML="exampleFormControlSelect2">Nova senha</label>
+                  <input type="password" className="form-control" readonly />
+                </div>
+                <div className="form-group">
+                  <label forHTML="exampleFormControlSelect2">
+                    Confirmar nova senha:
+                  </label>
+                  <input type="password" className="form-control" readonly />
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="newsletter"
+                    id="exampleRadios2"
+                    value="opcao2"
+                  />
+                  <label
+                    className="form-check-label"
+                    forHTML="exampleRadios2"
+                    style={{ marginBottom: '1rem' }}
+                  >
+                    Desejo receber newsletter de Petcodes.com.br
+                  </label>
+                </div>
+
+                <button
+                  onClick={e => this.handleSubmit(e)}
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ marginBottom: '1rem' }}
+                >
+                  Enviar
+                </button>
+              </form>
+              <div className="row" style={{ marginTop: '1rem' }}>
+                <div className="col">
+                  {error !== '' ? (
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      role="alert"
+                    >
+                      {error}
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                  </div>
+                  ) : (
+                    ''
+                  )}
                 </div>
-                <div className="row">
-                  <div className="col">
-                    <div class="form-group">
-                      <Link to="/signup">Criar Conta</Link>
-                    </div>
-                  </div>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </>
     );
   }
