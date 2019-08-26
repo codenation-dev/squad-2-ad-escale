@@ -14,9 +14,11 @@ export default function Header() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#" style={{ paddingLeft: '20px' }}>
-          Petcodes
-        </a>
+        <Link to="/">
+          <a className="navbar-brand" style={{ paddingLeft: '20px' }}>
+            Petcodes
+          </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
