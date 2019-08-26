@@ -3,12 +3,12 @@ import * as types from './types';
 const INITIAL_STATE = {
   username: '',
   password: '',
+  email: '',
   token: '',
   error: '',
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
-  console.log(action);
   switch (action.type) {
     case types.CHANGE_USERNAME: {
       return {
@@ -20,6 +20,12 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         password: action.payload,
+      };
+    }
+    case types.FILL_EMAIL: {
+      return {
+        ...state,
+        email: action.payload,
       };
     }
     case types.FILL_TOKEN: {

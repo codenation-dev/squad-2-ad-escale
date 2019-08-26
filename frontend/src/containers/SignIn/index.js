@@ -8,6 +8,7 @@ import {
   handleUsername,
   handlePassword,
   handleToken,
+  handleEmail,
   handleError,
 } from './actions';
 
@@ -17,6 +18,9 @@ class SignIn extends Component {
   };
   handleChangePassword = value => {
     this.props.dispatch(handlePassword(value));
+  };
+  handleGetEmail = value => {
+    this.props.dispatch(handleEmail(value));
   };
   handleGetToken = value => {
     this.props.dispatch(handleToken(value));
@@ -38,8 +42,9 @@ class SignIn extends Component {
             password,
           })
           .then(response => {
-            const token = response.data.token;
-            this.handleGetToken(token);
+            const results = response.data;
+            this.handleGetEmail(results.email);
+            this.handleGetToken(results.token);
             this.handleGetError('');
           });
         this.props.history.push('/');
@@ -148,6 +153,7 @@ function mapStateToProps(state) {
     username: state.signin.username,
     password: state.signin.password,
     token: state.signin.token,
+    email: state.signin.email,
     error: state.signin.error,
   };
 }

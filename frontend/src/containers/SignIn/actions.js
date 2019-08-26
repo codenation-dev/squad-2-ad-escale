@@ -21,6 +21,13 @@ export function handleToken(token) {
   };
 }
 
+export function handleEmail(email) {
+  return {
+    type: types.FILL_EMAIL,
+    payload: email,
+  };
+}
+
 export function handleError(error) {
   return {
     type: types.FILL_ERROR,
