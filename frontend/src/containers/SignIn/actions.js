@@ -1,15 +1,8 @@
 import * as types from './types';
 
-export function handleUsername(username) {
-  return {
-    type: types.CHANGE_USERNAME,
-    payload: username,
-  };
-}
-
 export function handlePassword(password) {
   return {
-    type: types.CHANGE_PASSWORD,
+    type: types.FILL_PASSWORD,
     payload: password,
   };
 }
