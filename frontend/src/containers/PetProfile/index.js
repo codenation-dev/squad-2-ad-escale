@@ -102,7 +102,7 @@ export default class PetProfile extends Component {
             {this.state.pet.description}
           </Row>
         </Container>
-
+        {/* adiciono aqui o component addpet para teste */}
         <AddPet></AddPet>
       </>
     );
