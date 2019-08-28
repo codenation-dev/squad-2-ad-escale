@@ -1,5 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {
+  handleEmail,
+  handlePassword,
+  handleToken,
+} from '../../containers/SignIn/actions';
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site
  
@@ -10,7 +16,44 @@ import { Link } from 'react-router-dom';
  -SignUp
 
  */
-export default function Header() {
+
+const Header = props => {
+  const { token } = props;
+
+  const handleChangeEmail = value => {
+    props.dispatch(handleEmail(value));
+  };
+  const handleChangePassword = value => {
+    props.dispatch(handlePassword(value));
+  };
+  const handleChangeToken = value => {
+    props.dispatch(handleToken(value));
+  };
+
+  const handleLogout = () => {
+    handleChangeEmail('');
+    handleChangePassword('');
+    handleChangeToken('');
+  };
+
+  const nonLoggedDiv = () => {
+    return (
+      <Link to="/signin" className="nav-link">
+        SignIn <span className="sr-only">(current)</span>
+      </Link>
+    );
+  };
+
+  const loggedDiv = () => {
+    return (
+      <Link to="/" className="nav-link">
+        <div className="button" onClick={e => handleLogout(e)}>
+          SignOut <span className="sr-only">(current)</span>
+        </div>
+      </Link>
+    );
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,65 +74,23 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link to="/" className="nav-link" href="#">
+              <Link to="/" className="nav-link">
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
             <li className="nav-item active">
-              <Link to="/signin" className="nav-link" href="#">
-                SignIn <span className="sr-only">(current)</span>
-              </Link>
+              {token === '' ? nonLoggedDiv() : loggedDiv()}
             </li>
             <li className="nav-item active">
-              <Link to="/signup" className="nav-link" href="#">
+              <Link to="/signup" className="nav-link">
                 SignUp <span className="sr-only">(current)</span>
               </Link>
             </li>
             <li className="nav-item active">
-              <Link to="/userprofile" className="nav-link" href="#">
+              <Link to="/userprofile" className="nav-link">
                 Meu Perfil <span className="sr-only">(current)</span>
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-              >
-                Disabled
-              </a>
-            </li> */}
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
@@ -109,4 +110,12 @@ export default function Header() {
       </nav>
     </>
   );
+};
+
+function mapStateToProps(state) {
+  return {
+    token: state.signin.token,
+  };
 }
+
+export default connect(mapStateToProps)(Header);
