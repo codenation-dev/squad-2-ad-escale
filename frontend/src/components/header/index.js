@@ -18,7 +18,7 @@ import {
  */
 
 const Header = props => {
-  const { token } = props;
+  const { token, email } = props;
 
   const handleChangeEmail = value => {
     props.dispatch(handleEmail(value));
@@ -39,19 +39,39 @@ const Header = props => {
   const nonLoggedDiv = () => {
     return (
       <Link to="/signin" className="nav-link">
-        SignIn <span className="sr-only">(current)</span>
+        <button className="btn btn-outline-success my-2 my-sm-0">Login</button>
+        <span className="sr-only">(current)</span>
       </Link>
     );
   };
 
   const loggedDiv = () => {
     return (
-      <Link to="/" className="nav-link">
-        <div className="button" onClick={e => handleLogout(e)}>
-          SignOut <span className="sr-only">(current)</span>
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {email}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <Link to="/userprofile" class="dropdown-item">
+            Perfil
+          </Link>
+          <Link to="/" class="dropdown-item" onClick={e => handleLogout(e)}>
+            Sair
+          </Link>
         </div>
-      </Link>
+      </div>
     );
+  };
+
+  const myProfile = () => {
+    return <></>;
   };
 
   return (
@@ -72,39 +92,9 @@ const Header = props => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link to="/" className="nav-link">
-                Home <span className="sr-only">(current)</span>
-              </Link>
-            </li>
-            <li className="nav-item active">
-              {token === '' ? nonLoggedDiv() : loggedDiv()}
-            </li>
-            <li className="nav-item active">
-              <Link to="/signup" className="nav-link">
-                SignUp <span className="sr-only">(current)</span>
-              </Link>
-            </li>
-            <li className="nav-item active">
-              <Link to="/userprofile" className="nav-link">
-                Meu Perfil <span className="sr-only">(current)</span>
-              </Link>
-            </li>
-          </ul>
+          <ul className="navbar-nav mr-auto"></ul>
           <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
+            {token === '' ? nonLoggedDiv() : loggedDiv()}
           </form>
         </div>
       </nav>
@@ -115,6 +105,7 @@ const Header = props => {
 function mapStateToProps(state) {
   return {
     token: state.signin.token,
+    email: state.signin.email,
   };
 }
 
