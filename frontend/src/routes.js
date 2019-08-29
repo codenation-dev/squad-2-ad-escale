@@ -12,8 +12,8 @@ export default function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/petprofile" component={PetProfile} />
-      <Route path="/userprofile" component={UserProfile} />
+      <Route path="/petprofile/:id" component={PetProfile} />
+      <Route path="/userprofile/" component={UserProfile} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
     </Switch>
