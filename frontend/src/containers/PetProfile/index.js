@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
-
 import AddPet from '../../components/addpet';
+import { connect } from 'react-redux';
 
-export default class PetProfile extends Component {
+class PetProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -108,3 +107,11 @@ export default class PetProfile extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    pet: state.home.pet,
+  };
+}
+
+export default connect(mapStateToProps)(PetProfile);
