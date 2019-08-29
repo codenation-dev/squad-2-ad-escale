@@ -1,34 +1,21 @@
+from django.core import serializers
 from django.conf import settings
 from django import forms
 from django.contrib import admin
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
-from .constants import SIZE, GENDER, CATEGORIES, CATEGORIES_STATUS
+from .constants import SIZE, GENDER 
 
 class PetType(models.Model):
     name = models.CharField(max_length=100, unique=True)
     
     def __str__(self):
         return self.name
-
-# class Size(models.Model):
-#     name = models.CharField(max_length=100)
-    
-#     def __str__(self):
-#         return self.name
-
-# class Gender(models.Model):
-#     name = models.CharField(max_length=100)
-    
-#     def __str__(self):
-#         return self.name
-
         
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     
     class Meta:
         verbose_name_plural = 'Categories'
@@ -37,10 +24,7 @@ class Category(models.Model):
         return self.name       
 
 class CategoryStatus(models.Model):
-    name = models.CharField(
-        max_length=100,
-        choices=CATEGORIES_STATUS
-    )
+    name = models.CharField(max_length=100, unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
@@ -84,7 +68,7 @@ class Image(models.Model):
 
 
 class Pet(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     images = models.ManyToManyField(Image, blank=True)
     name = models.CharField(max_length=200, null=False)
     description = models.TextField(null=True, blank=True)
@@ -101,13 +85,8 @@ class Pet(models.Model):
         blank=True,
         null=True
     )
-    category = models.CharField(
-        max_length=100,
-        choices=CATEGORIES,
-        blank=True,
-        null=True
-    )
-    category_status = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False, related_name='category')
+    category_status = models.ForeignKey(CategoryStatus, on_delete=models.CASCADE, null=True, blank=True, related_name='category_status')
     state = models.CharField(max_length=1024, null=False)
     city = models.CharField(max_length=1024, null=False)
     contact_name = models.CharField(max_length=100, null=False)
@@ -116,5 +95,18 @@ class Pet(models.Model):
     email = models.CharField(max_length=200, null=True, blank=True)
     published_date = models.DateTimeField(auto_now_add=True, blank=True)
 
+    def status_history(self):
+        return PetStatusHistory.objects.all().filter(pet=self).order_by('-created')
+ 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        PetStatusHistory.objects.create(category_status=self.category_status, pet=self)
+
+
     def __str__(self):
         return self.name
+
+class PetStatusHistory(models.Model):
+        category_status = models.ForeignKey(CategoryStatus, on_delete=models.CASCADE, null=True, blank=True)
+        pet = models.ForeignKey(Pet, on_delete=models.CASCADE, null=True, blank=True)
+        created = models.DateTimeField(auto_now_add=True, blank=True)
