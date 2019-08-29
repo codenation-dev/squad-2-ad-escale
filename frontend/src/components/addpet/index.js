@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
 import axios from 'axios'
 import { Container, Form, Col, Button } from 'react-bootstrap';
 import { IoMdPaw } from 'react-icons/io';
+
 import { handleToken } from '../../containers/SignIn/actions';
 
 class AddPet extends Component {
@@ -73,14 +75,17 @@ class AddPet extends Component {
     this.setState({description: value});
   };
 
+  handleGetToken = value => {
+    this.props.dispatch(handleToken(value));
+  };
+
   handleAddPet = async e => {
     e.preventDefault();
     const { userId, name, category, pet_type, gender, size, contact_name, email, phone_1, phone_2, state, city, description} = this.state;
 
     var config = {
-      headers: { Authorization: 'token c80c35bf3ea10b9e06c7c2dd8e11c404b6ef5c57' }
+      headers: { Authorization: `token ${this.props.token}` }
       };
-    // axios.defaults.headers.common = config;
 
     try {
       console.log(this.state)
@@ -197,4 +202,10 @@ class AddPet extends Component {
   }
 }
 
-export default AddPet;
+function mapStateToProps(state) {
+  return {
+    token: state.signin.token,
+  };
+}
+
+export default connect(mapStateToProps)(AddPet);
