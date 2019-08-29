@@ -47,9 +47,9 @@ const Header = props => {
 
   const loggedDiv = () => {
     return (
-      <div class="dropdown">
+      <div className="dropdown">
         <button
-          class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
+          className="btn btn-outline-success my-2 my-sm-0 dropdown-toggle"
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"
@@ -58,11 +58,11 @@ const Header = props => {
         >
           {email}
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <Link to="/userprofile" class="dropdown-item">
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <Link to="/userprofile" className="dropdown-item">
             Perfil
           </Link>
-          <Link to="/" class="dropdown-item" onClick={e => handleLogout(e)}>
+          <Link to="/" className="dropdown-item" onClick={e => handleLogout(e)}>
             Sair
           </Link>
         </div>
