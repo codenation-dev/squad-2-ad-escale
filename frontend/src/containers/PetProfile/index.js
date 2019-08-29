@@ -3,23 +3,37 @@ import axios from 'axios';
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
 import AddPet from '../../components/addpet';
 import { connect } from 'react-redux';
+// Import da action que vai preencher o estado pets no redux
+import { fillPet } from '../Home/actions';
 
 class PetProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pet: [],
-      image: [],
-    };
-  }
+  fetchPetByID = async id => {
+    try {
+      await axios
+        .get(`https://petcode.pythonanywhere.com/api/pet/${id}/`)
+        .then(res => {
+          const pet = res.data;
+          this.props.dispatch(fillPet(pet));
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   componentDidMount() {
+    const id = this.props.match.params.id;
+    this.fetchPetByID(id);
+  }
+
+  /*   componentDidMount() {
     const userId = 2;
     const endpoint = `https://petcode.herokuapp.com/api/pet/?user=${userId}`;
     this.handleGetAllPets(endpoint);
-  }
+  } */
+  /*
+   */
 
-  handleGetAllPets = async endpoint => {
+  /*   handleGetAllPets = async endpoint => {
     try {
       await axios
         .get(endpoint)
@@ -37,17 +51,19 @@ class PetProfile extends Component {
       alert(e);
     }
     console.log(this.state.pet.size);
-  };
+  }; */
 
-  formatDate(string) {
+  /*   formatDate(string) {
     const mes = new Date(string).getDay();
     const dia = new Date(string).getDate();
     const ano = new Date(string).getFullYear();
     return `${dia}/${mes}/${ano}`;
-  }
+  } */
 
   render() {
-    const images = this.state.image.map(image => (
+    const { images = {} } = this.props.pet || '';
+
+    /* const imagesCarouselItem = images.map(image => (
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -56,13 +72,26 @@ class PetProfile extends Component {
           alt="fotos_pet"
         />
       </Carousel.Item>
-    ));
+    )); */
 
     return (
       <>
-        <Container>
+        {/* <Container>
           <Col xs>
-            <Carousel className="Carrousel">{images}</Carousel>
+            <Carousel className="Carrousel">
+              {this.images !== undefined
+                ? images.map(image => (
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100"
+                        height="400px"
+                        src={image.image}
+                        alt="fotos_pet"
+                      />
+                    </Carousel.Item>
+                  ))
+                : ''}
+            </Carousel>
           </Col>
           <h1>{this.state.pet.name}</h1>
           <Row>
@@ -99,10 +128,10 @@ class PetProfile extends Component {
           <Row>
             <h3>Informações</h3>
             {this.state.pet.description}
-          </Row>
+          </Row> 
         </Container>
         {/* adiciono aqui o component addpet para teste */}
-        <AddPet></AddPet>
+        <AddPet></AddPet> */}
       </>
     );
   }
