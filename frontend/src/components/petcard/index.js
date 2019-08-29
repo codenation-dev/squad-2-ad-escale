@@ -25,11 +25,11 @@ export default function Petcard({ pet }) {
                 {name}
               </h4>
               <p className="card-text" style={{ margin: '0 1rem 0 1rem' }}>
-                {category === 'ENCONTRADOS'
-                  ? 'Encontrados'
-                  : category === 'ADOCAO'
-                  ? 'Adoção'
-                  : 'Perdidos'}
+                {category === 1
+                  ? 'Achados'
+                  : category === 2
+                  ? 'Perdidos'
+                  : 'Adoção'}
               </p>
               <p className="card-text" style={{ margin: '0 1rem 1rem 1rem' }}>
                 {city}
