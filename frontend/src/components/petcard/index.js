@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 // Componente pet
 export default function Petcard({ pet }) {
-  const { image = {}, name, category, gender, city, state } = pet;
+  const { id, image = {}, name, category, gender, city, state } = pet;
+  const uri = `/petprofile/${id}`;
   return (
     <>
-      <Link to="/petprofile" style={{ clearfix: 'true' }}>
+      <Link to={uri} style={{ clearfix: 'true' }}>
         <div className="col-sm w-100 p-3 mh-100">
           <div className="card">
             {image[0] !== undefined ? (
