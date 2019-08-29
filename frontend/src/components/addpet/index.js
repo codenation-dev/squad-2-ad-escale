@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import { Container, Form, Col, Button } from 'react-bootstrap';
+import { IoMdPaw } from 'react-icons/io';
+import { handleToken } from '../../containers/SignIn/actions';
 
 class AddPet extends Component {
   state = {
@@ -76,14 +78,14 @@ class AddPet extends Component {
     const { userId, name, category, pet_type, gender, size, contact_name, email, phone_1, phone_2, state, city, description} = this.state;
 
     var config = {
-      headers: { Authorization: 'token fa873292096a2bf3fbb23e69f579ad95d1cc8db3' }
+      headers: { Authorization: 'token c80c35bf3ea10b9e06c7c2dd8e11c404b6ef5c57' }
       };
     // axios.defaults.headers.common = config;
 
     try {
       console.log(this.state)
         await axios
-          .post('https://petcode.herokuapp.com/api/pet/', {
+          .post('https://petcode.pythonanywhere.com/api/pet/', {
             userId, name, category, pet_type, gender, size, contact_name, email, phone_1, phone_2, state, city, description
           },
           config)
@@ -99,6 +101,13 @@ class AddPet extends Component {
   render() {
    return (
       <>
+      <div className="row">
+          </div>
+          <div className="row">
+            <div className="img-fluid rounded mx-auto d-block">
+              <IoMdPaw className="img-fluid" size="135" />
+            </div>
+          </div>
         <Form onSubmit={this.handleAddPet}>
           <Container>
             <Form.Row>

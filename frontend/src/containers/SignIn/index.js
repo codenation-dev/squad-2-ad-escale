@@ -34,7 +34,7 @@ class SignIn extends Component {
     } else {
       try {
         await axios
-          .post('https://petcode-v1.herokuapp.com/api/users/login/', {
+          .post('https://petcode.pythonanywhere.com/api/users/login/', {
             email,
             password,
           })

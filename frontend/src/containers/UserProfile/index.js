@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { IoIosPerson } from 'react-icons/io';
+import Addpet from '../../components/addpet/index'
 
 import {
   /*   handleUsername, */
@@ -11,7 +12,12 @@ import {
   handleError,
 } from '../SignIn/actions';
 
+
+
 class UserProfile extends React.Component {
+  state = {
+    show: false,
+  }
   /*   handleChangeUsername = value => {
     this.props.dispatch(handleUsername(value));
   }; */
@@ -46,6 +52,12 @@ class UserProfile extends React.Component {
   componentDidMount() {
     this.handleGetUserLogged();
   }
+
+  handleShow = e => {
+    e.preventDefault();
+    console.log(this.state.show)
+    this.setState({show: true});
+  };
 
   render() {
     const { email, token, error } = this.props;
@@ -137,10 +149,20 @@ class UserProfile extends React.Component {
                   ) : (
                     ''
                   )}
+
+                  <button
+                    onClick={e => this.handleShow(e)}
+                    type="submit"
+                    className="btn btn-primary"
+                    style={{ marginBottom: '1rem' }}
+                    >
+                    + Add Pet
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+            {this.state.show && <Addpet />}
         </div>
       </>
     );
