@@ -7,13 +7,12 @@ export default function Petcard({ pet }) {
   const uri = `/petprofile/${id}`;
   return (
     <>
-      <Link to={uri} style={{ clearfix: 'true' }}>
-        <div className="col-sm w-100 p-3 mh-100">
+      <Link to={uri}>
+        <div className="col" style={{ paddingBottom: '1rem' }}>
           <div className="card">
             {images[0] !== undefined ? (
               <img
                 className="card-img-top rounded mx-auto d-block"
-                style={{ padding: '1rem' }}
                 src={images[0].image}
                 alt="Card image cap"
               />
@@ -31,7 +30,7 @@ export default function Petcard({ pet }) {
                   ? 'Perdidos'
                   : 'Adoção'}
               </p>
-              <p className="card-text" style={{ margin: '0 1rem 1rem 1rem' }}>
+              <p className="card-text" style={{ margin: '0 0rem 0rem 1rem' }}>
                 {city}
               </p>
             </div>

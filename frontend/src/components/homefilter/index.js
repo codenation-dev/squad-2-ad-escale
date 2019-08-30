@@ -15,10 +15,7 @@ import React from 'react';
 export default function HomeFilter({ handleGetFilteredPets }) {
   return (
     <>
-      <div
-        className="container"
-        style={{ textAlign: 'center', padding: '12px' }}
-      >
+      <div className="col" style={{ textAlign: 'center', padding: '12px' }}>
         <div className="btn-group" role="group" aria-label="Exemplo básico">
           <button
             type="button"

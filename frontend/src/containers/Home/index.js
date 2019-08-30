@@ -60,21 +60,9 @@ class Home extends React.Component {
     return (
       <>
         <div className="container">
-          <div className="Row">
-            <div className="Col">
-              <HomeSlider />
-            </div>
-          </div>
-          <div className="Row">
-            <div className="Col">
-              <HomeFilter handleGetFilteredPets={this.handleGetFilteredPets} />
-            </div>
-          </div>
-          <div className="Row">
-            <div className="Col">
-              <HomeContent pets={this.props.pets} />
-            </div>
-          </div>
+          <HomeSlider />
+          <HomeFilter handleGetFilteredPets={this.handleGetFilteredPets} />
+          <HomeContent pets={this.props.pets} />
         </div>
       </>
     );
