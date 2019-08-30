@@ -5,6 +5,7 @@ import * as types from './types';
  */
 const INITIAL_STATE = {
   pets: [],
+  pet: {},
 };
 
 /**
@@ -21,6 +22,12 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         pets: action.payload,
+      };
+    }
+    case types.FILL_PET: {
+      return {
+        ...state,
+        pet: action.payload,
       };
     }
     default:
