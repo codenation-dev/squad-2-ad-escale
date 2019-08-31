@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { IoIosPerson } from 'react-icons/io';
-import Addpet from '../../components/addpet/index'
+import Addpet from '../../components/addpet/index';
 
 import {
   /*   handleUsername, */
@@ -12,15 +12,10 @@ import {
   handleError,
 } from '../SignIn/actions';
 
-
-
 class UserProfile extends React.Component {
   state = {
     show: false,
-  }
-  /*   handleChangeUsername = value => {
-    this.props.dispatch(handleUsername(value));
-  }; */
+  };
   handleGetEmail = value => {
     this.props.dispatch(handleEmail(value));
   };
@@ -37,10 +32,9 @@ class UserProfile extends React.Component {
   handleGetUserLogged = async () => {
     try {
       if (this.props.token !== '') {
-        console.log('logado');
       }
     } catch (e) {
-      console.log('não logado');
+      alert(e);
     }
   };
 
@@ -55,114 +49,111 @@ class UserProfile extends React.Component {
 
   handleShow = e => {
     e.preventDefault();
-    console.log(this.state.show)
-    this.setState({show: true});
+    this.setState({ show: true });
   };
 
   render() {
     const { email, token, error } = this.props;
     return (
       <>
-        <div className="container">
-          <div className="row">
-            {token !== '' ? '' : <Redirect to="/signin" />}
+        {token !== '' ? '' : <Redirect to="/signin" />}
+        <div className="row">
+          <div className="img-fluid rounded mx-auto d-block">
+            <IoIosPerson className="img-fluid" size="135" />
           </div>
-          <div className="row">
-            <div className="img-fluid rounded mx-auto d-block">
-              <IoIosPerson className="img-fluid" size="135" />
-            </div>
-          </div>
-          <div className="row" style={{ padding: '1rem' }}>
-            <div className="col">
-              <form>
-                <div className="form-group">
-                  <label>E-mail:</label>
-                  <input
-                    value={email}
-                    type="text"
-                    className="form-control"
-                    readonly
-                  />
-                </div>
-                {/*                 <div className="form-group">
+        </div>
+        <div className="row" style={{ padding: '1rem' }}>
+          <div className="col">
+            <form>
+              <div className="form-group">
+                <label>E-mail:</label>
+                <input
+                  value={email}
+                  type="text"
+                  className="form-control"
+                  readonly
+                />
+              </div>
+              {/*                 <div className="form-group">
                   <label>Username:</label>
                   <input value={username} className="form-control" readonly />
                 </div> */}
 
-                <div className="form-group">
-                  <label>Senha atual:</label>
-                  <input type="password" className="form-control" readonly />
-                </div>
-                <div className="form-group">
-                  <label forHTML="exampleFormControlSelect2">Nova senha</label>
-                  <input type="password" className="form-control" readonly />
-                </div>
-                <div className="form-group">
-                  <label forHTML="exampleFormControlSelect2">
-                    Confirmar nova senha:
-                  </label>
-                  <input type="password" className="form-control" readonly />
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="newsletter"
-                    id="exampleRadios2"
-                    value="opcao2"
-                  />
-                  <label
-                    className="form-check-label"
-                    forHTML="exampleRadios2"
-                    style={{ marginBottom: '1rem' }}
+              <div className="form-group">
+                <label>Senha atual:</label>
+                <input type="password" className="form-control" readonly />
+              </div>
+              <div className="form-group">
+                <label forHTML="exampleFormControlSelect2">Nova senha</label>
+                <input type="password" className="form-control" readonly />
+              </div>
+              <div className="form-group">
+                <label forHTML="exampleFormControlSelect2">
+                  Confirmar nova senha:
+                </label>
+                <input type="password" className="form-control" readonly />
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="newsletter"
+                  id="exampleRadios2"
+                  value="opcao2"
+                />
+                <label
+                  className="form-check-label"
+                  forHTML="exampleRadios2"
+                  style={{ marginBottom: '1rem' }}
+                >
+                  Desejo receber newsletter de Petcodes.com.br
+                </label>
+              </div>
+
+              <button
+                onClick={e => this.handleSubmit(e)}
+                type="submit"
+                className="btn btn-primary"
+                style={{ marginBottom: '1rem' }}
+              >
+                Enviar
+              </button>
+            </form>
+            <div className="row" style={{ marginTop: '1rem' }}>
+              <div className="col">
+                {error !== '' ? (
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    role="alert"
                   >
-                    Desejo receber newsletter de Petcodes.com.br
-                  </label>
-                </div>
+                    {error}
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                ) : (
+                  ''
+                )}
 
                 <button
-                  onClick={e => this.handleSubmit(e)}
+                  onClick={e => this.handleShow(e)}
                   type="submit"
                   className="btn btn-primary"
                   style={{ marginBottom: '1rem' }}
                 >
-                  Enviar
+                  + Add Pet
                 </button>
-              </form>
-              <div className="row" style={{ marginTop: '1rem' }}>
-                <div className="col">
-                  {error !== '' ? (
-                    <div
-                      class="alert alert-danger alert-dismissible fade show"
-                      role="alert"
-                    >
-                      {error}
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                  ) : (
-                    ''
-                  )}
-
-                  <button
-                    onClick={e => this.handleShow(e)}
-                    type="submit"
-                    className="btn btn-primary"
-                    style={{ marginBottom: '1rem' }}
-                    >
-                    + Add Pet
-                  </button>
-                </div>
               </div>
             </div>
           </div>
-            {this.state.show && <Addpet />}
+        </div>
+        <div className="row" style={{ padding: '1rem' }}>
+          <div className="col">{this.state.show && <Addpet />}</div>
         </div>
       </>
     );
