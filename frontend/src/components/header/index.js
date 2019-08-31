@@ -8,8 +8,8 @@ import {
 } from '../../containers/SignIn/actions';
 /* Componente cabeçalho, carrega logotipo, main links, componente de busca geral no site
  link para se inscrever e fazer login no site
- 
- Componentes: 
+
+ Componentes:
  -Logotipo
  -Campo de Busca Geral no Site(igual o recipes, busca abrangente com rotas inclusive)
  -SignIn
@@ -70,10 +70,6 @@ const Header = props => {
     );
   };
 
-  const myProfile = () => {
-    return <></>;
-  };
-
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,10 +85,10 @@ const Header = props => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto"></ul>
+          <ul className="navbar-nav mr-auto" />
           <form className="form-inline my-2 my-lg-0">
             {token === '' ? nonLoggedDiv() : loggedDiv()}
           </form>

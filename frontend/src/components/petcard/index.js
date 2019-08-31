@@ -14,10 +14,10 @@ export default function Petcard({ pet }) {
               <img
                 className="card-img-top rounded mx-auto d-block"
                 src={images[0].image}
-                alt="Card image cap"
+                alt="Card cap"
               />
             ) : (
-              <svg style={{ backgroundColor: 'lightGray' }}></svg>
+              <svg style={{ backgroundColor: 'lightGray' }} />
             )}
             <div className="card-block">
               <h4 className="card-title" style={{ margin: '1rem 1rem 0 1rem' }}>
