@@ -100,8 +100,11 @@ class Pet(models.Model):
  
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        PetStatusHistory.objects.create(category_status=self.category_status, pet=self)
-
+        pet_status_history = PetStatusHistory.objects.all()
+        last_pet_status_history_id = pet_status_history.last().category_status_id
+        has_already_this_status = self.category_status_id == last_pet_status_history_id
+        if not has_already_this_status:
+            return PetStatusHistory.objects.create(category_status=self.category_status, pet=self)
 
     def __str__(self):
         return self.name

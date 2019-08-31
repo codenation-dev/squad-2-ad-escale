@@ -24,7 +24,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [PublicCreateOnly]
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], url_path='login')
     def login(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
@@ -42,3 +42,21 @@ class UserViewSet(viewsets.ModelViewSet):
             response['token'] = token.key
             return Response(response,
                             status=HTTP_200_OK)
+
+    @action(methods=['post'], detail=False, url_path='change-password', permission_classes=[AllowAny])
+    def set_password(self, request, pk=None):
+        email = request.data.get("email")
+        old_password = request.data.get("old_password")
+        new_password = request.data.get("new_password")
+        user = User.objects.get(email=email)
+        if not user:
+            return Response({'error': 'User does not exists'},
+                            status=HTTP_404_NOT_FOUND)
+
+         if user.check_password(old_password):            
+            user.set_password(new_password)
+            user.save()
+            return Response({'status': 'Password has been set'}, status=HTTP_200_OK)  
+
+         return Response({'old_password': ['Wrong password.']}, 
+                            status=HTTP_400_BAD_REQUEST)
