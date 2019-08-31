@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class AddPet extends Component {
   state = {
@@ -13,12 +14,10 @@ class AddPet extends Component {
   };
 
   handleEachOneState = target => {
-    console.log(target);
     this.setState({ [target.name]: target.value });
   };
 
   handleSetImages = images => {
-    console.log({ images });
     this.setState({
       images: [...images],
     });
@@ -43,8 +42,9 @@ class AddPet extends Component {
 
         config,
       )
-      .then(res => console.log(res.data))
       .catch(e => console.log(e));
+
+    return <Redirect to="/" />;
   };
 
   handleAddPet = e => {
@@ -108,7 +108,7 @@ class AddPet extends Component {
       <>
         <form onSubmit={this.handleAddPet}>
           <div className="form-row">
-            <div class="form-group col-md-4">
+            <div className="form-group col-md-4">
               <input
                 type="text"
                 className="form-control"
@@ -120,7 +120,7 @@ class AddPet extends Component {
             <div className="form-group col-md-2">
               <select
                 name="category"
-                class="form-control"
+                className="form-control"
                 onChange={e => this.handleSelect(e.target)}
               >
                 <option selected>Categoria</option>
@@ -132,7 +132,7 @@ class AddPet extends Component {
             <div className="form-group col col-md-2">
               <select
                 name="pet_type"
-                class="form-control"
+                className="form-control"
                 onChange={e => this.handleSelect(e.target)}
               >
                 <option selected>Tipo</option>
@@ -144,7 +144,7 @@ class AddPet extends Component {
             <div className="form-group col col-md-2">
               <select
                 name="size"
-                class="form-control"
+                className="form-control"
                 onChange={e => this.handleEachOneState(e.target)}
               >
                 <option selected>Porte</option>
@@ -156,7 +156,7 @@ class AddPet extends Component {
             <div className="form-group col col-md-2">
               <select
                 name="gender"
-                class="form-control"
+                className="form-control"
                 onChange={e => this.handleEachOneState(e.target)}
               >
                 <option selected>Sexo</option>
@@ -166,9 +166,9 @@ class AddPet extends Component {
             </div>
           </div>
           <div className="form-row">
-            <div class="form-group col">
+            <div className="form-group col">
               <textarea
-                class="form-control"
+                className="form-control"
                 name="description"
                 rows="2"
                 placeholder="Detalhes do pet"
@@ -181,7 +181,7 @@ class AddPet extends Component {
             <div className="form-group col-md-4">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 name="contact_name"
                 placeholder="Seu nome"
                 onChange={e => this.handleEachOneState(e.target)}
@@ -190,7 +190,7 @@ class AddPet extends Component {
             <div className="form-group  col-md-2">
               <input
                 type="tel"
-                class="form-control"
+                className="form-control"
                 name="phone_1"
                 placeholder="Seu telefone"
                 onChange={e => this.handleEachOneState(e.target)}
@@ -199,7 +199,7 @@ class AddPet extends Component {
             <div className="form-group col col-md-4">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 name="city"
                 placeholder="Cidade"
                 onChange={e => this.handleEachOneState(e.target)}
@@ -208,7 +208,7 @@ class AddPet extends Component {
             <div className="form-group col col-md-2">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 name="state"
                 placeholder="Estado"
                 onChange={e => this.handleEachOneState(e.target)}
@@ -225,9 +225,9 @@ class AddPet extends Component {
               />
             </div>
           </div>
-          <div className="row">
+          <div className="row" style={{ paddingTop: '1rem' }}>
             <div className="col">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" className="btn btn-primary">
                 Adicionar
               </button>
             </div>

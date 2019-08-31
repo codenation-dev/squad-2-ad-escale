@@ -124,8 +124,6 @@ class PetProfile extends Component {
                 </Row>
               </p>
             </Container>
-
-            <AddPet></AddPet>
           </Jumbotron>
         </Container>
       </>
