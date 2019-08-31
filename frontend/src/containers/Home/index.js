@@ -57,12 +57,41 @@ class Home extends React.Component {
     }
   };
 
+  /**
+   * Manipulador que faz requisição na api e devolve a lista de pets
+   * Filtrada por tamanho 
+   * e dispara a action que popula o state pets no redux
+   * Implementar outros filtros
+   */
+  //handleGetMoreFilteredPets = async (type,size,gender) => {
+    handleGetMoreFilteredPets = async query => {
+    try {
+      await axios
+        .get(`https://petcode.pythonanywhere.com/api/pet/?size=${query}`)
+        //esta linha empresta o query de categoria e aplica em tipo de pet
+        //.get(`https://petcode.pythonanywhere.com/api/pet/?type=${query}`)
+        //esta linha preve o formato de requisicao com todos os filtros implementados
+        //.get(`https://petcode.pythonanywhere.com/api/pet/?type=${type}&size=${size}&gender=${gender}`)
+        .then(response => {
+          const results = response.data;
+          this.props.dispatch(fillPets(results));
+        });
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+
+
+
+
   render() {
     return (
       <>
         <div className="container">
           <HomeSlider />
           <HomeFilter handleGetFilteredPets={this.handleGetFilteredPets} />
+          <HomeMoreFilter handleGetMoreFilteredPets={this.handleGetMoreFilteredPets}/>
           <HomeContent pets={this.props.pets} />
         </div>
       </>
