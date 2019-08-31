@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Jumbotron, Container, Row, Col, Carousel } from 'react-bootstrap';
-import AddPet from '../../components/addpet';
 import { connect } from 'react-redux';
 // Import da action que vai preencher o estado pets no redux
 import { fillPet } from '../Home/actions';
@@ -124,8 +123,6 @@ class PetProfile extends Component {
                 </Row>
               </p>
             </Container>
-
-            <AddPet></AddPet>
           </Jumbotron>
         </Container>
       </>
