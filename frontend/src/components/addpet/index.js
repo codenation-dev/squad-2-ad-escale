@@ -1,202 +1,170 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios'
-import { Container, Form, Col, Button } from 'react-bootstrap';
-import { IoMdPaw } from 'react-icons/io';
-
-import { handleToken } from '../../containers/SignIn/actions';
+import axios from 'axios';
 
 class AddPet extends Component {
-  state = {
-    name: '',
-    category: '',
-    pet_type: '',
-    gender: '',
-    size: '',
-    contact_name: '',
-    email: '',
-    phone_1: '',
-    phone_2: '',
-    state: '',
-    city: '',
-    description: ''
+  state = {};
 
-  };
-
-  handleChangeUserId = value => {
-    this.setState({userId: value});
-  };
-
-  handleChangeNamePet = value => {
-    this.setState({name: value});
-  };
-
-  handleChangeCategory = value => {
-    this.setState({category: value});
-  };
-
-  handleChangeType = value => {
-    this.setState({pet_type: value});
-  };
-
-  handleChangeGender= value => {
-    this.setState({gender: value});
-  };
-
-  handleChangeSize= value => {
-    this.setState({size: value});
-  };
-
-  handleChangeContact= value => {
-    this.setState({contact_name: value});
-  };
-
-  handleChangeEmail= value => {
-    this.setState({email: value});
-  };
-
-  handleChangePhone1= value => {
-    this.setState({phone_1: value});
-  };
-
-  handleChangePhone2= value => {
-    this.setState({phone_2: value});
-  };
-
-  handleChangeCity= value => {
-    this.setState({city: value});
-  };
-
-  handleChangeState= value => {
-    this.setState({state: value});
-  };
-
-  handleChangeDescription= value => {
-    this.setState({description: value});
-  };
-
-  handleGetToken = value => {
-    this.props.dispatch(handleToken(value));
+  handleEachInputState = target => {
+    this.setState({ [target.name]: target.value });
   };
 
   handleAddPet = async e => {
     e.preventDefault();
-    const { userId, name, category, pet_type, gender, size, contact_name, email, phone_1, phone_2, state, city, description} = this.state;
+    const {
+      name,
+      city,
+      state,
+      description,
+      contact_name,
+      phone_1,
+      category,
+      pet_type,
+      size,
+      gender,
+    } = this.state;
 
-    var config = {
-      headers: { Authorization: `token ${this.props.token}` }
-      };
+    const config = {
+      headers: { Authorization: `token ${this.props.token}` },
+    };
 
     try {
-      console.log(this.state)
-        await axios
-          .post('https://petcode.pythonanywhere.com/api/pet/', {
-            userId, name, category, pet_type, gender, size, contact_name, email, phone_1, phone_2, state, city, description
+      console.log(this.state);
+      await axios
+        .post(
+          'https://petcode.pythonanywhere.com/api/pet/',
+          {
+            name,
+            city,
+            state,
+            description,
+            contact_name,
+            phone_1,
+            category,
+            pet_type,
+            size,
+            gender,
           },
-          config)
-          .then(response => {
-            const res = response.data;
-            console.log(res)
-          });
-      } catch (err) {
-        console.log(err)
-        this.setState({ error: 'Erro' });
-      }
+          config,
+        )
+        .then(response => {
+          const res = response.data;
+        });
+    } catch (e) {
+      alert(e);
     }
+  };
+
   render() {
-   return (
+    return (
       <>
-      <div className="row">
-          </div>
-          <div className="row">
-            <div className="img-fluid rounded mx-auto d-block">
-              <IoMdPaw className="img-fluid" size="135" />
+        <form>
+          <div className="form-row">
+            <div class="form-group col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                name="name"
+                placeholder="Nome do pet"
+              />
+            </div>
+            <div className="form-group col-md-2">
+              <select
+                name="category"
+                class="form-control"
+                onChange={this.handleEachOptionState}
+              >
+                <option selected>Categoria</option>
+                <option value="1">Achado</option>
+                <option value="2">Perdido</option>
+                <option value="3">Adoção</option>
+              </select>
+            </div>
+            <div className="form-group col col-md-2">
+              <select id="pet_type" class="form-control">
+                <option selected>Tipo</option>
+                <option value="1">Gato</option>
+                <option value="2">Cachorro</option>
+                <option value="3">Outro</option>
+                onChange={e => this.handleEachOneState(e.target)}
+              </select>
+            </div>
+            <div className="form-group col col-md-2">
+              <select id="size" class="form-control">
+                <option selected>Porte</option>
+                <option value="p">Pequeno</option>
+                <option value="m">Médio</option>
+                <option value="g">Grande</option>
+                onChange={e => this.handleEachOneState(e.target)}
+              </select>
+            </div>
+            <div className="form-group col col-md-2">
+              <select id="gender" class="form-control">
+                <option selected>Sexo</option>
+                <option value="f">Fêmea</option>
+                <option value="m">Macho</option>
+                onChange={e => this.handleEachOneState(e.target)}
+              </select>
             </div>
           </div>
-        <Form onSubmit={this.handleAddPet}>
-          <Container>
-            <Form.Row>
-              <Form.Group controlId="formGridUser">
-                <Form.Control placeholder="Id" onChange={e => this.handleChangeUserId(e.target.value)} />
-              </Form.Group>
+          <div className="form-row">
+            <div class="form-group col">
+              <textarea
+                class="form-control"
+                id="description"
+                rows="2"
+                placeholder="Detalhes do pet"
+                onChange={e => this.handleEachOneState(e.target)}
+              ></textarea>
+            </div>
+          </div>
 
-              <Form.Group controlId="formGridNamePet">
-                <Form.Control placeholder="Nome do Pet" onChange={e => this.handleChangeNamePet(e.target.value)}/>
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridCategoria" onChange={e => this.handleChangeCategory(e.target.value)}>
-                <Form.Control as="select">
-                  <option>Categoria...</option>
-                  <option>ADOCAO</option>
-                  <option>ENCONTRADOS</option>
-                  <option>PROCURA_SE</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridTipo" onChange={e => this.handleChangeType(e.target.value)}>
-                <Form.Control as="select">
-                  <option>Tipo...</option>
-                  <option>1</option>
-                  <option>2</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridGenero" onChange={e => this.handleChangeGender(e.target.value)}>
-                <Form.Control as="select">
-                  <option>Gênero...</option>
-                  <option>m</option>
-                  <option>f</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridSize" onChange={e => this.handleChangeSize(e.target.value)}>
-                <Form.Control as="select">
-                  <option>Porte...</option>
-                  <option>p</option>
-                  <option>m</option>
-                  <option>g</option>
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-
-            <Form.Group controlId="formGridDescription">
-                <Form.Control placeholder="Descrição" onChange={e => this.handleChangeDescription(e.target.value)}/>
-              </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridContato">
-              <Form.Control type="text" placeholder="Nome do Contato" onChange={e => this.handleChangeContact(e.target.value)} />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Control type="email" placeholder="Email do contato" onChange={e => this.handleChangeEmail(e.target.value)}/>
-            </Form.Group>
-
-            <Form.Group controlId="formGridPhone1">
-              <Form.Control placeholder="Celular" onChange={e => this.handleChangePhone1(e.target.value)}/>
-            </Form.Group>
-
-            <Form.Group controlId="formGridPhone2">
-              <Form.Control placeholder="Telefone" onChange={e => this.handleChangePhone2(e.target.value)}/>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridState"onChange={e => this.handleChangeState(e.target.value)}>
-              <Form.Control as="select">
-                <option>UF...</option>
-                <option>SP</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridCity">
-                <Form.Control placeholder="Cidade" onChange={e => this.handleChangeCity(e.target.value)}/>
-              </Form.Group>
-            </Form.Row>
-
-            <Button variant="primary" type="submit">
-              Adicionar
-            </Button>
-          </Container>
-        </Form>
+          <div className="form-row">
+            <div className="form-group col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                id="contact_name"
+                placeholder="Seu nome"
+                onChange={e => this.handleEachOneState(e.target)}
+              />
+            </div>
+            <div className="form-group  col-md-2">
+              <input
+                type="text"
+                class="form-control"
+                id="phone_1"
+                placeholder="Seu telefone"
+                onChange={e => this.handleEachOneState(e.target)}
+              />
+            </div>
+            <div className="form-group col col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                id="city"
+                placeholder="Cidade"
+                onChange={e => this.handleEachOneState(e.target)}
+              />
+            </div>
+            <div className="form-group col col-md-2">
+              <input
+                type="text"
+                class="form-control"
+                id="state"
+                placeholder="Estado"
+                onChange={e => this.handleEachOneState(e.target)}
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <button type="submit" class="btn btn-primary">
+                Adicionar
+              </button>
+            </div>
+          </div>
+        </form>
       </>
     );
   }
