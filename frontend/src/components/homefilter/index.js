@@ -15,17 +15,14 @@ import React from 'react';
 export default function HomeFilter({ handleGetFilteredPets }) {
   return (
     <>
-      <div
-        className="container"
-        style={{ textAlign: 'center', padding: '12px' }}
-      >
+      <div className="col" style={{ textAlign: 'center', padding: '12px' }}>
         <div className="btn-group" role="group" aria-label="Exemplo básico">
           <button
             type="button"
             className="btn btn-warning"
-            name="ENCONTRADOS"
+            name='"ENCONTRADOS"'
             onClick={e => {
-              handleGetFilteredPets(e.target.name);
+              handleGetFilteredPets(1); // Categoria 1 Encontrados, achados
             }}
           >
             Achados
@@ -35,7 +32,7 @@ export default function HomeFilter({ handleGetFilteredPets }) {
             className="btn btn-danger"
             name="PROCURA_SE"
             onClick={e => {
-              handleGetFilteredPets(e.target.name);
+              handleGetFilteredPets(2); // Categoria 2 Perdidos, procura-se
             }}
           >
             Perdidos
@@ -45,7 +42,7 @@ export default function HomeFilter({ handleGetFilteredPets }) {
             className="btn btn-info"
             name="ADOCAO"
             onClick={e => {
-              handleGetFilteredPets(e.target.name);
+              handleGetFilteredPets(3); // Categoria 3 Adoção
             }}
           >
             Adoação

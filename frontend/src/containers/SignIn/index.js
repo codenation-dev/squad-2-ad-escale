@@ -5,22 +5,19 @@ import { connect } from 'react-redux';
 import { IoMdPaw } from 'react-icons/io'; // importação do icone pet de uma biblioteca
 
 import {
-  handleUsername,
+  /* handleUsername, */
+  handleEmail,
   handlePassword,
   handleToken,
-  handleEmail,
   handleError,
 } from './actions';
 
 class SignIn extends Component {
-  handleChangeUsername = value => {
-    this.props.dispatch(handleUsername(value));
+  handleChangeEmail = value => {
+    this.props.dispatch(handleEmail(value));
   };
   handleChangePassword = value => {
     this.props.dispatch(handlePassword(value));
-  };
-  handleGetEmail = value => {
-    this.props.dispatch(handleEmail(value));
   };
   handleGetToken = value => {
     this.props.dispatch(handleToken(value));
@@ -31,19 +28,18 @@ class SignIn extends Component {
 
   handleSignIn = async e => {
     e.preventDefault();
-    const { username, password } = this.props;
-    if (!username || !password) {
+    const { email, password } = this.props;
+    if (!email || !password) {
       this.handleGetError('Preencha todos os dados para logar');
     } else {
       try {
         await axios
-          .post('https://petcode.herokuapp.com/api/users/login/', {
-            username,
+          .post('https://petcode.pythonanywhere.com/api/users/login/', {
+            email,
             password,
           })
           .then(response => {
             const results = response.data;
-            this.handleGetEmail(results.email);
             this.handleGetToken(results.token);
             this.handleGetError('');
           });
@@ -55,7 +51,7 @@ class SignIn extends Component {
   };
 
   render() {
-    const { username, password, error } = this.props;
+    const { email, password, error } = this.props;
 
     return (
       <>
@@ -64,13 +60,13 @@ class SignIn extends Component {
             <div className="col">
               {error !== '' ? (
                 <div
-                  class="alert alert-danger alert-dismissible fade show"
+                  className="alert alert-danger alert-dismissible fade show"
                   role="alert"
                 >
                   {error}
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="alert"
                     aria-label="Close"
                   >
@@ -84,7 +80,7 @@ class SignIn extends Component {
           </div>
           <div className="row">
             <div className="img-fluid rounded mx-auto d-block">
-              <IoMdPaw class="img-fluid" size="135" />
+              <IoMdPaw className="img-fluid" size="135" />
               <h2>Pet Codes</h2>
             </div>
           </div>
@@ -93,23 +89,21 @@ class SignIn extends Component {
               <form onSubmit={this.handleSignIn}>
                 <div className="row">
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         className="form-control form-control-lg"
-                        value={username}
+                        value={email}
                         required
-                        type="username"
-                        placeholder="Usuário"
-                        onChange={e =>
-                          this.handleChangeUsername(e.target.value)
-                        }
+                        type="e-mail"
+                        placeholder="e-mail"
+                        onChange={e => this.handleChangeEmail(e.target.value)}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         className="form-control form-control-lg"
                         value={password}
@@ -125,8 +119,8 @@ class SignIn extends Component {
                 </div>
                 <div className="row">
                   <div className="col">
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-dark">
+                    <div className="form-group">
+                      <button type="submit" className="btn btn-dark">
                         Login
                       </button>
                     </div>
@@ -134,7 +128,7 @@ class SignIn extends Component {
                 </div>
                 <div className="row">
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <Link to="/signup">Criar Conta</Link>
                     </div>
                   </div>
@@ -150,10 +144,9 @@ class SignIn extends Component {
 
 function mapStateToProps(state) {
   return {
-    username: state.signin.username,
+    email: state.signin.email,
     password: state.signin.password,
     token: state.signin.token,
-    email: state.signin.email,
     error: state.signin.error,
   };
 }

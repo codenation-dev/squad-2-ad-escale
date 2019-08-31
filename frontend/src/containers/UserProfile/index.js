@@ -1,26 +1,31 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { IoIosPerson } from 'react-icons/io';
+import Addpet from '../../components/addpet/index'
 
 import {
-  handleUsername,
+  /*   handleUsername, */
+  handleEmail,
   handlePassword,
   handleToken,
-  handleEmail,
   handleError,
 } from '../SignIn/actions';
 
+
+
 class UserProfile extends React.Component {
-  handleChangeUsername = value => {
+  state = {
+    show: false,
+  }
+  /*   handleChangeUsername = value => {
     this.props.dispatch(handleUsername(value));
+  }; */
+  handleGetEmail = value => {
+    this.props.dispatch(handleEmail(value));
   };
   handleChangePassword = value => {
     this.props.dispatch(handlePassword(value));
-  };
-  handleGetEmail = value => {
-    this.props.dispatch(handleEmail(value));
   };
   handleGetToken = value => {
     this.props.dispatch(handleToken(value));
@@ -48,8 +53,14 @@ class UserProfile extends React.Component {
     this.handleGetUserLogged();
   }
 
+  handleShow = e => {
+    e.preventDefault();
+    console.log(this.state.show)
+    this.setState({show: true});
+  };
+
   render() {
-    const { username, password, email, token, error } = this.props;
+    const { email, token, error } = this.props;
     return (
       <>
         <div className="container">
@@ -58,7 +69,7 @@ class UserProfile extends React.Component {
           </div>
           <div className="row">
             <div className="img-fluid rounded mx-auto d-block">
-              <IoIosPerson class="img-fluid" size="135" />
+              <IoIosPerson className="img-fluid" size="135" />
             </div>
           </div>
           <div className="row" style={{ padding: '1rem' }}>
@@ -73,10 +84,10 @@ class UserProfile extends React.Component {
                     readonly
                   />
                 </div>
-                <div className="form-group">
+                {/*                 <div className="form-group">
                   <label>Username:</label>
                   <input value={username} className="form-control" readonly />
-                </div>
+                </div> */}
 
                 <div className="form-group">
                   <label>Senha atual:</label>
@@ -138,10 +149,20 @@ class UserProfile extends React.Component {
                   ) : (
                     ''
                   )}
+
+                  <button
+                    onClick={e => this.handleShow(e)}
+                    type="submit"
+                    className="btn btn-primary"
+                    style={{ marginBottom: '1rem' }}
+                    >
+                    + Add Pet
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+            {this.state.show && <Addpet />}
         </div>
       </>
     );
@@ -154,9 +175,8 @@ class UserProfile extends React.Component {
  */
 function mapStateToProps(state) {
   return {
-    username: state.signin.username,
-    password: state.signin.password,
     email: state.signin.email,
+    password: state.signin.password,
     token: state.signin.token,
     error: state.signin.error,
   };

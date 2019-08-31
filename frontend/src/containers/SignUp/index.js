@@ -8,18 +8,26 @@ import axios from 'axios';
 
 class SignUp extends Component {
   state = {
-    username: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     confirmPassword: '',
     error: '',
-    invalidPasswordError: ''
+    invalidPasswordError: '',
   };
 
   handleSignUp = async e => {
     e.preventDefault();
-    const { username, email, password, confirmPassword, error } = this.state;
-    if (!username || !email || !password || !confirmPassword) {
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      confirmPassword,
+      error,
+    } = this.state;
+    if (!first_name || !last_name || !email || !password || !confirmPassword) {
       this.setState({ error: 'Preencha todos os dados para Cadastrar' });
       console.log(error);
 
@@ -30,10 +38,11 @@ class SignUp extends Component {
     } else {
       try {
         await axios
-          .post('https://petcode.herokuapp.com/api/users/', {
-            username,
+          .post('https://petcode.pythonanywhere.com/api/users/', {
             email,
             password,
+            first_name,
+            last_name,
           })
           .then(response => {
             const login_res = response.data;
@@ -43,16 +52,17 @@ class SignUp extends Component {
         this.props.history.push('/signin');
       } catch (err) {
         console.log(err);
-        if(err && err.response) {
-          const invalidPasswordError = err.response.data && err.response.data.password[0];
+        /* if (err && err.response) {
+          const invalidPasswordError =
+            err.response.data && err.response.data.password[0];
           return this.setState({ invalidPasswordError });
         }
-        return this.setState({ error: err });
+        return this.setState({ error: err }); */
       }
     }
   };
   render() {
-    const {invalidPasswordError} = this.state;
+    const { invalidPasswordError } = this.state;
     return (
       <>
         <Wrapper>
@@ -65,29 +75,45 @@ class SignUp extends Component {
               <input
                 required
                 type="text"
-                placeholder="Usuário"
-                onChange={e => this.setState({ username: e.target.value })}
+                placeholder="Primeiro Nome"
+                onChange={e => this.setState({ first_name: e.target.value })}
+              />
+              <input
+                required
+                type="text"
+                placeholder="Sobrenome"
+                onChange={e => this.setState({ last_name: e.target.value })}
               />
               <input
                 required
                 type="email"
-                placeholder="Email"
+                placeholder="E-mail"
                 onChange={e => this.setState({ email: e.target.value })}
               />
               <input
                 required
                 type="password"
                 placeholder="Senha"
-                onChange={e => this.setState({ password: e.target.value, invalidPasswordError: '' })}
+                onChange={e =>
+                  this.setState({
+                    password: e.target.value,
+                    invalidPasswordError: '',
+                  })
+                }
               />
               <input
                 required
                 type="password"
                 placeholder="Confirme a Senha"
-                onChange={e => this.setState({ confirmPassword: e.target.value, invalidPasswordError: '' })}
+                onChange={e =>
+                  this.setState({
+                    confirmPassword: e.target.value,
+                    invalidPasswordError: '',
+                  })
+                }
               />
 
-              <span style={{color:"red"}}>{invalidPasswordError}</span>
+              <span style={{ color: 'red' }}>{invalidPasswordError}</span>
               <button type="submit">Criar Conta</button>
               <Link to="/signin">Já tenho Cadastro</Link>
             </form>
