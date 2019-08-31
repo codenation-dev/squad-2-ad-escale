@@ -3,50 +3,51 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 class AddPet extends Component {
-  state = {};
+  state = {
+    category: '',
+    type: '',
+  };
 
-  // a
+  handleSelect = target => {
+    this.setState({ [target.name]: Number(target.value) });
+  };
 
   handleEachOneState = target => {
     console.log(target);
     this.setState({ [target.name]: target.value });
   };
 
-  handleGetID = async e => {
-    e.preventDefault();
+  handleSetImages = images => {
+    console.log({ images });
     this.setState({
-      images: [...e.target.files],
+      images: [...images],
     });
-    try {
-      await axios
-        .get('https://petcode.pythonanywhere.com/api/pet/')
-        .then(res => {
-          const result = res.data;
-          const idx = result.length - 1;
-          this.setState({
-            id: result[idx].id,
-          });
-        });
-    } catch (e) {
-      alert(e);
-    }
   };
 
-  handlePostImages = async image => {
+  handlePostImages = (id, image) => {
+    const formData = new FormData();
+    formData.append('image', image);
+
     const config = {
-      headers: { Authorization: `token ${this.props.token}` },
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Token ${this.props.token}`,
+      },
     };
 
-    await axios.post(
-      `https://petcode.pythonanywhere.com/api/pet/${this.state.id}/image-upload`,
-      {
-        image,
-      },
-      config,
-    );
+    axios
+      .post(
+        `https://petcode.pythonanywhere.com/api/pet/${id}/image-upload`,
+
+        formData,
+
+        config,
+      )
+      .then(res => console.log(res.data))
+      .catch(e => console.log(e));
   };
 
-  handleAddPet = async e => {
+  handleAddPet = e => {
     e.preventDefault();
     const {
       name,
@@ -66,34 +67,40 @@ class AddPet extends Component {
       headers: { Authorization: `token ${this.props.token}` },
     };
 
-    //Cadastrando o pet
-    try {
-      await axios
-        .post(
-          'https://petcode.pythonanywhere.com/api/pet/',
-          {
-            name,
-            city,
-            state,
-            description,
-            contact_name,
-            phone_1,
-            category,
-            pet_type,
-            size,
-            gender,
-          },
-          config,
-        )
-        .then(
-          images.map(image => {
-            this.handlePostImages(image);
-          }),
-        );
-    } catch (e) {
-      alert(e);
-    }
-    // Consultando o ultimo id do pet
+    axios
+      .get('https://petcode.pythonanywhere.com/api/pet/')
+      .then(res => {
+        const result = res.data;
+        const idx = result.length - 1;
+        return result[idx].id;
+      })
+      .then(id => {
+        axios
+          .post(
+            'https://petcode.pythonanywhere.com/api/pet/',
+            {
+              name,
+              city,
+              state,
+              description,
+              contact_name,
+              phone_1,
+              category,
+              pet_type,
+              size,
+              gender,
+            },
+            config,
+          )
+          .then(() => {
+            images.map(image => {
+              this.handlePostImages(id, image);
+            });
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
   };
 
   render() {
@@ -114,7 +121,7 @@ class AddPet extends Component {
               <select
                 name="category"
                 class="form-control"
-                onChange={e => this.handleEachOneState(e.target)}
+                onChange={e => this.handleSelect(e.target)}
               >
                 <option selected>Categoria</option>
                 <option value="1">Achado</option>
@@ -126,7 +133,7 @@ class AddPet extends Component {
               <select
                 name="pet_type"
                 class="form-control"
-                onChange={e => this.handleEachOneState(e.target)}
+                onChange={e => this.handleSelect(e.target)}
               >
                 <option selected>Tipo</option>
                 <option value="1">Gato</option>
@@ -182,7 +189,7 @@ class AddPet extends Component {
             </div>
             <div className="form-group  col-md-2">
               <input
-                type="text"
+                type="tel"
                 class="form-control"
                 name="phone_1"
                 placeholder="Seu telefone"
@@ -214,7 +221,7 @@ class AddPet extends Component {
                 type="file"
                 name="filefield"
                 multiple="multiple"
-                onChange={e => this.handleAddImages(e)}
+                onChange={e => this.handleSetImages(e.target.files)}
               />
             </div>
           </div>
@@ -222,16 +229,6 @@ class AddPet extends Component {
             <div className="col">
               <button type="submit" class="btn btn-primary">
                 Adicionar
-              </button>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <button
-                onClick={e => this.handleAddImages(e)}
-                class="btn btn-primary"
-              >
-                Adicionar fotos
               </button>
             </div>
           </div>
