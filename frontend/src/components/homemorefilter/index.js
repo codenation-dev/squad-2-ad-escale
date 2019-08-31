@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
@@ -32,46 +33,43 @@ export default function HomeMoreFilter({ handleGetFilteredPets }) {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Tamanho
+              Imitando primeiro filtro
             </button>
             <div className="dropdown-menu">
-              <div>
-                <a
-                  href="/"
-                  onClick={e => {
-                    handleGetFilteredPets(e.target.name);
-                  }}
+              <div
+                type="button"
+                className="dropdown-item"
+                name="ADOCAO"
+                onClick={e =>{
+                  handleGetFilteredPets(e.target.name);
+                }}
                 >
-                  Item 1
-                </a>
+                Adoção              
               </div>
-              <div>
-                <a
-                  href="/"
-                  onClick={e => {
-                    handleGetFilteredPets(e.target.name);
-                  }}
-                >
-                  Mini
-                </a>
+              <div
+                className="dropdown-item"
+                onClick={e => handleGetFilteredPets(e)}
+              >
+                Alguma ação 2
               </div>
-              <div>
-                <a
-                  href="/"
-                  onClick={e => {
-                    handleGetFilteredPets(e.target.name);
-                  }}
-                >
-                  Pequeno
-                </a>
+              <div
+                className="dropdown-item"
+                onClick={e => handleGetFilteredPets(e)}
+              >
+                Alguma ação 3
               </div>
-              <Link to="/" className="dropdown-item">
-                Medio
-              </Link>
-              <div className="dropdown-divider" />
-              <Link to="/SignIn" className="dropdown-item">
-                Grande
-              </Link>
+              <div
+                className="dropdown-item"
+                onClick={e => handleGetFilteredPets(e)}
+              >
+                Alguma ação 4
+              </div>
+              <div
+                className="dropdown-item"
+                onClick={e => handleGetFilteredPets(e)}
+              >
+                Alguma ação 5
+              </div>
             </div>
           </div>
         </div>
