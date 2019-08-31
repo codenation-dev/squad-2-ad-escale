@@ -61,7 +61,7 @@ class Home extends React.Component {
    * Manipulador que faz requisição na api e devolve a lista de pets
    * Filtrada por tamanho 
    * e dispara a action que popula o state pets no redux
-   * Implementar outros filtros
+   * Implementar outros filtros :  Tipo de pet e genero
    */
   //handleGetMoreFilteredPets = async (type,size,gender) => {
     handleGetMoreFilteredPets = async query => {
