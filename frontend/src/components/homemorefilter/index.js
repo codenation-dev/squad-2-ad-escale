@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 */
 
 
-export default function HomeMoreFilter({ handleGetFilteredPets }) {
+export default function HomeMoreFilter({ handleGetMoreFilteredPets }) {
   return (
     <>
       <div
@@ -25,6 +25,38 @@ export default function HomeMoreFilter({ handleGetFilteredPets }) {
         style={{ textAlign: 'center', padding: '12px' }}
       >
         <div className="btn-group" role="group" aria-label="Exemplo básico">
+        <div className="btn-group">
+            <button
+              type="button"
+              className="btn btn-danger dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Tipo            
+            </button>
+            <div className="dropdown-menu">
+              <div                
+                className="dropdown-item"
+                name="1"
+                onClick={e =>{
+                  handleGetMoreFilteredPets(e.target.name);
+                }}
+                >
+                Cachorro              
+              </div>
+              <div
+              name="2"
+
+                className="dropdown-item"
+                onClick={e => handleGetMoreFilteredPets(e)}
+              >
+                Gato
+              </div>
+              
+              
+            </div>
+          </div>
           <div className="btn-group">
             <button
               type="button"
@@ -33,43 +65,66 @@ export default function HomeMoreFilter({ handleGetFilteredPets }) {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Imitando primeiro filtro
+              Tamanho            
             </button>
             <div className="dropdown-menu">
-              <div
-                type="button"
+              <div                
                 className="dropdown-item"
-                name="ADOCAO"
+                name="p"
                 onClick={e =>{
-                  handleGetFilteredPets(e.target.name);
+                  handleGetMoreFilteredPets(e.target.name);
                 }}
                 >
-                Adoção              
+                Pequeno              
               </div>
               <div
+              name="m"
+
                 className="dropdown-item"
-                onClick={e => handleGetFilteredPets(e)}
+                onClick={e => handleGetMoreFilteredPets(e)}
               >
-                Alguma ação 2
+                Médio
               </div>
               <div
+              name="g"
                 className="dropdown-item"
-                onClick={e => handleGetFilteredPets(e)}
+                onClick={e => handleGetMoreFilteredPets(e)}
               >
-                Alguma ação 3
+                Grande
+              </div>
+              
+            </div>
+          </div>
+          <div className="btn-group">
+            <button
+              type="button"
+              className="btn btn-danger dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Gênero            
+            </button>
+            <div className="dropdown-menu">
+              <div                
+                className="dropdown-item"
+                name="f"
+                onClick={e =>{
+                  handleGetMoreFilteredPets(e.target.name);
+                }}
+                >
+                Fêmea             
               </div>
               <div
+              name="m"
+
                 className="dropdown-item"
-                onClick={e => handleGetFilteredPets(e)}
+                onClick={e => handleGetMoreFilteredPets(e)}
               >
-                Alguma ação 4
+                Macho
               </div>
-              <div
-                className="dropdown-item"
-                onClick={e => handleGetFilteredPets(e)}
-              >
-                Alguma ação 5
-              </div>
+              
+              
             </div>
           </div>
         </div>
