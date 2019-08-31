@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Select from 'react-select';
+// import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 /* Componente de filtro central, com as principais opções de filtro
 
@@ -15,7 +15,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 */
-
 
 export default function HomeMoreFilter({ handleGetFilteredPets }) {
   return (
@@ -40,11 +39,11 @@ export default function HomeMoreFilter({ handleGetFilteredPets }) {
                 type="button"
                 className="dropdown-item"
                 name="ADOCAO"
-                onClick={e =>{
+                onClick={e => {
                   handleGetFilteredPets(e.target.name);
                 }}
-                >
-                Adoção              
+              >
+                Adoção
               </div>
               <div
                 className="dropdown-item"
@@ -112,7 +111,7 @@ export default function HomeMoreFilter({ handleGetFilteredPets }) {
 
 
 
-          {/* Teste com Select do react bootstrap 
+          {/* Teste com Select do react bootstrap
 
       <div
       className="container"
