@@ -5,6 +5,7 @@ import axios from 'axios';
 import HomeContent from '../../components/homecontent';
 import HomeSlider from '../../components/homeslider';
 import HomeFilter from '../../components/homefilter';
+import HomeMoreFilter from '../../components/homemorefilter';
 // Import da action que vai preencher o estado pets no redux
 import { fillPets } from './actions';
 // Para podermos utilizar o estado que está no redux importamos essa classe e conectamos esse componente(home) ao redux
@@ -28,7 +29,7 @@ class Home extends React.Component {
   handleGetAll = async () => {
     try {
       await axios
-        .get('https://petcode.herokuapp.com/api/pet/')
+        .get('https://petcode.pythonanywhere.com/api/pet/')
         .then(response => {
           const allpets = response.data;
           this.props.dispatch(fillPets(allpets));
@@ -46,9 +47,7 @@ class Home extends React.Component {
   handleGetFilteredPets = async query => {
     try {
       await axios
-        .get(
-          `https://petcode.herokuapp.com/api/pet/?category=${query.toUpperCase()}`,
-        )
+        .get(`https://petcode.pythonanywhere.com/api/pet/?category=${query}`)
         .then(response => {
           const results = response.data;
           this.props.dispatch(fillPets(results));
@@ -62,21 +61,9 @@ class Home extends React.Component {
     return (
       <>
         <div className="container">
-          <div className="Row">
-            <div className="Col">
-              <HomeSlider />
-            </div>
-          </div>
-          <div className="Row">
-            <div className="Col">
-              <HomeFilter handleGetFilteredPets={this.handleGetFilteredPets} />
-            </div>
-          </div>
-          <div className="Row">
-            <div className="Col">
-              <HomeContent pets={this.props.pets} />
-            </div>
-          </div>
+          <HomeSlider />
+          <HomeFilter handleGetFilteredPets={this.handleGetFilteredPets} />
+          <HomeContent pets={this.props.pets} />
         </div>
       </>
     );
