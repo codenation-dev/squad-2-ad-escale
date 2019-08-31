@@ -5,6 +5,7 @@ import axios from 'axios';
 import HomeContent from '../../components/homecontent';
 import HomeSlider from '../../components/homeslider';
 import HomeFilter from '../../components/homefilter';
+import HomeMoreFilter from '../../components/homemorefilter';
 // Import da action que vai preencher o estado pets no redux
 import { fillPets } from './actions';
 // Para podermos utilizar o estado que está no redux importamos essa classe e conectamos esse componente(home) ao redux
