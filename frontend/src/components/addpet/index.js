@@ -5,8 +5,8 @@ import axios from 'axios';
 class AddPet extends Component {
   state = {};
 
-  handleEachOneState = e => {
-    this.setState({ [e.name]: e.value });
+  handleEachInputState = target => {
+    this.setState({ [target.name]: target.value });
   };
 
   handleAddPet = async e => {
@@ -63,40 +63,47 @@ class AddPet extends Component {
             <div class="form-group col-md-4">
               <input
                 type="text"
-                class="form-control"
-                id="name"
+                className="form-control"
+                name="name"
                 placeholder="Nome do pet"
               />
             </div>
             <div className="form-group col-md-2">
-              <select id="category" class="form-control">
+              <select
+                name="category"
+                class="form-control"
+                onChange={this.handleEachOptionState}
+              >
                 <option selected>Categoria</option>
-                <option value="">Achado</option>
-                <option value="">Perdido</option>
-                <option value="">Adoção</option>
+                <option value="1">Achado</option>
+                <option value="2">Perdido</option>
+                <option value="3">Adoção</option>
               </select>
             </div>
             <div className="form-group col col-md-2">
               <select id="pet_type" class="form-control">
                 <option selected>Tipo</option>
-                <option value="">Gato</option>
-                <option value="">Cachorro</option>
-                <option value="">Outro</option>
+                <option value="1">Gato</option>
+                <option value="2">Cachorro</option>
+                <option value="3">Outro</option>
+                onChange={e => this.handleEachOneState(e.target)}
               </select>
             </div>
             <div className="form-group col col-md-2">
               <select id="size" class="form-control">
                 <option selected>Porte</option>
-                <option value="">Pequeno</option>
-                <option value="">Médio</option>
-                <option value="">Grande</option>
+                <option value="p">Pequeno</option>
+                <option value="m">Médio</option>
+                <option value="g">Grande</option>
+                onChange={e => this.handleEachOneState(e.target)}
               </select>
             </div>
             <div className="form-group col col-md-2">
               <select id="gender" class="form-control">
                 <option selected>Sexo</option>
-                <option value="">Fêmea</option>
-                <option value="">Macho</option>
+                <option value="f">Fêmea</option>
+                <option value="m">Macho</option>
+                onChange={e => this.handleEachOneState(e.target)}
               </select>
             </div>
           </div>
@@ -107,6 +114,7 @@ class AddPet extends Component {
                 id="description"
                 rows="2"
                 placeholder="Detalhes do pet"
+                onChange={e => this.handleEachOneState(e.target)}
               ></textarea>
             </div>
           </div>
@@ -118,6 +126,7 @@ class AddPet extends Component {
                 class="form-control"
                 id="contact_name"
                 placeholder="Seu nome"
+                onChange={e => this.handleEachOneState(e.target)}
               />
             </div>
             <div className="form-group  col-md-2">
@@ -126,6 +135,7 @@ class AddPet extends Component {
                 class="form-control"
                 id="phone_1"
                 placeholder="Seu telefone"
+                onChange={e => this.handleEachOneState(e.target)}
               />
             </div>
             <div className="form-group col col-md-4">
@@ -134,6 +144,7 @@ class AddPet extends Component {
                 class="form-control"
                 id="city"
                 placeholder="Cidade"
+                onChange={e => this.handleEachOneState(e.target)}
               />
             </div>
             <div className="form-group col col-md-2">
@@ -142,15 +153,16 @@ class AddPet extends Component {
                 class="form-control"
                 id="state"
                 placeholder="Estado"
+                onChange={e => this.handleEachOneState(e.target)}
               />
             </div>
-            {/* <div className="form-row">
-              <div class="form-group col-md-8">
-                <div className="button">
-                  <input type="file" id="multi" multiple />
-                </div>
-              </div>
-            </div> */}
+          </div>
+          <div className="row">
+            <div className="col">
+              <button type="submit" class="btn btn-primary">
+                Adicionar
+              </button>
+            </div>
           </div>
         </form>
       </>
