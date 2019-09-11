@@ -6,10 +6,10 @@ import Review from '../review';
 const theme = {
   background: '#f5f8fb',
   fontFamily: 'Helvetica Neue',
-  headerBgColor: '#EF6C00',
+  headerBgColor: 'blueviolet',
   headerFontColor: '#fff',
   headerFontSize: '15px',
-  botBubbleColor: '#EF6C00',
+  botBubbleColor: 'blueviolet',
   botFontColor: '#fff',
   userBubbleColor: '#fff',
   userFontColor: '#4a4a4a',
@@ -101,7 +101,7 @@ const steps = [
 
 const SimpleForm = () => (
   <ThemeProvider theme={theme}>
-    <ChatBot haderTitle="PetBot" steps={steps} />
+    <ChatBot headerTitle="PetBot" steps={steps} />
   </ThemeProvider>
 );
 
