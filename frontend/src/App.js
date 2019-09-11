@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Header from './components/header';
 import Footer from './components/footer';
+import ChatBot from './components/chatbot';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <Routes />
         <Footer />
+        <ChatBot />
       </Router>
     </Provider>
   );
