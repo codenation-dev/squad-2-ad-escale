@@ -6,6 +6,9 @@ class SimpleForm extends Component {
   render() {
     return (
       <ChatBot
+        headerTitle="PetBot"
+        /*         speechSynthesis={{ enable: true, lang: 'pt-br' }}
+        recognitionEnable={{ enable: true, lang: 'pt-br' }} */
         steps={[
           {
             id: '1',
