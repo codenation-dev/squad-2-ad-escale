@@ -26,7 +26,7 @@ const ChatBot = () => {
                 startChat();
               }}
             >
-              chat...
+              Fale com o Petbot!
             </button>
           ) : (
             <button className="btnBot" onClick={() => hideChat()}>
