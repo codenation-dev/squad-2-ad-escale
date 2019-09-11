@@ -15,31 +15,26 @@ class SimpleForm extends Component {
           {
             id: 'name',
             user: true,
-            trigger: '3',
+            trigger: '5',
           },
           {
             id: '5',
-            message: 'Qual a sua idade?',
-            trigger: 'age',
+            message: 'Qual a seu telefone?',
+            trigger: 'tel',
           },
           {
-            id: 'age',
+            id: 'tel',
             user: true,
-            trigger: '7',
-            validator: value => {
-              if (isNan(value)) {
-                return 'valor deve ser numérico';
-              } else if (value < 0) {
-                return 'valor deve ser positivo';
-              } else if (value > 120) {
-                return `{value}? Come on!`;
-              }
-              return true;
-            },
+            trigger: 'help',
           },
           {
-            id: '7',
-            message: 'Ótimo, cheque o resumo das suas informações',
+            id: 'help',
+            message: 'Como podemos ajudar?',
+            trigger: 'msg',
+          },
+          {
+            id: 'msg',
+            user: true,
             trigger: 'review',
           },
           {
@@ -50,42 +45,48 @@ class SimpleForm extends Component {
           },
           {
             id: 'update',
-            message: 'Você gostaria de alterar algum campo?',
+            message: 'Gostaria de alterar alguma coisa?',
             trigger: 'update-question',
           },
           {
             id: 'update-question',
             options: [
-              { value: 'yes', label: 'Yes', trigger: 'update-yes' },
-              { value: 'no', label: 'No', trigger: 'end-message' },
+              { value: 'yes', label: 'Sim', trigger: 'update-yes' },
+              { value: 'no', label: 'Não', trigger: 'end-message' },
             ],
           },
           {
             id: 'update-yes',
-            message: 'Qual campo você gostaria de alterar?',
+            message: 'Qual campo?',
             trigger: 'update-fields',
           },
           {
             id: 'update-fields',
             options: [
               { value: 'name', label: 'Nome', trigger: 'update-name' },
-              { value: 'age', label: 'Idade', trigger: 'update-age' },
+              { value: 'tel', label: 'Telefone', trigger: 'update-tel' },
+              { value: 'msg', label: 'Mensagem', trigger: 'update-msg' },
             ],
           },
           {
             id: 'update-name',
             update: 'name',
-            trigger: '7',
+            trigger: 'review',
           },
           {
-            id: 'update-age',
-            update: 'age',
-            trigger: '7',
+            id: 'update-tel',
+            update: 'tel',
+            trigger: 'review',
+          },
+          {
+            id: 'update-msg',
+            update: 'msg',
+            trigger: 'review',
           },
           {
             id: 'end-message',
             message:
-              'Obrigado, recebemos seus dados, assim que analisar retornaremos o contato, o prazo máximo é de 2 horas.',
+              'Perfeito, recebemos seus dados e retornaremos o contato em até 1 hora!',
           },
         ]}
       />

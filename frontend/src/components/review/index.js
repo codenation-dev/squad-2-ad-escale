@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const Review = props => {
-  const { state, setState } = useState({ name: '', age: '' });
+  const [state, setState] = useState({ name: '', tel: '', msg: '' });
 
   useEffect(() => {
     const { steps } = props;
-    const { name, age } = steps;
-    setState({ name, age });
+    const { name, tel, msg } = steps;
+    setState({ name, tel, msg });
   }, [props]);
 
-  const { name, age } = state;
+  const { name, tel, msg } = state;
   return (
     <>
       <div style={{ width: '100%' }}>
@@ -18,12 +18,16 @@ const Review = props => {
         <table>
           <tbody>
             <tr>
-              <td>Name</td>
+              <td>Nome:</td>
               <td>{name.value}</td>
             </tr>
             <tr>
-              <td>Age</td>
-              <tr>{age.value}</tr>
+              <td>Contato</td>
+              <tr>{tel.value}</tr>
+            </tr>
+            <tr>
+              <td>Mensagem:</td>
+              <tr>{msg.value}</tr>
             </tr>
           </tbody>
         </table>
