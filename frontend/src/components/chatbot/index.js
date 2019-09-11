@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SimpleForm from '../simpleform';
+import './index.css';
 
 const ChatBot = () => {
   let [showChat, setShowChat] = useState(false);
@@ -20,7 +21,7 @@ const ChatBot = () => {
         <div>
           {!showChat ? (
             <button
-              className="btn"
+              className="btnBot"
               onClick={() => {
                 startChat();
               }}
@@ -28,7 +29,7 @@ const ChatBot = () => {
               chat...
             </button>
           ) : (
-            <button className="btn" onClick={() => hideChat()}>
+            <button className="btnBot" onClick={() => hideChat()}>
               esconder o chat...
             </button>
           )}

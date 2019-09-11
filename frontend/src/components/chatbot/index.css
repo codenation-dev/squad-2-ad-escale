@@ -1,0 +1,15 @@
+.bot {
+    bottom: 10px;
+    z-index: 10;
+    right : 10px;
+    position: fixed;
+    width: 350px;
+}
+
+.btnBot {
+    font-size: 20px;
+    border-radius: 10px;
+    float: right;
+    width: 100%;
+    padding: 8px;
+}
