@@ -17,7 +17,7 @@ django-phone-field==1.7.1
 django-starcross-gallery==1.0.6
 django-url-filter==0.3.13
 django-zip-code-api==1.4.2
-djangorestframework==3.10.2
+djangorestframework==3.11.2
 enum-compat==0.0.2
 gunicorn==19.9.0
 idna==2.8
