@@ -899,6 +899,11 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@blakeembrey/deque@^1.0.3":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@blakeembrey/deque/-/deque-1.0.5.tgz#f4fa17fc5ee18317ec01a763d355782c7b395eaf"
+  integrity sha512-6xnwtvp9DY1EINIKdTfvfeAtCYw4OqBZJhtiqkT3ivjnEfa25VQ3TsKvaFfKm8MyGIEfE95qLe+bNEt3nB0Ylg==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -3678,6 +3683,13 @@ eslint-config-airbnb@^17.1.1:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
+eslint-config-prettier@^4.1.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-4.3.0.tgz#c55c1fcac8ce4518aeb77906984e134d9eb5a4f0"
+  integrity sha512-sZwhSTHVVz78+kYD3t5pCWSYEdVSBR0PXnwjDRsUs8ytIrK8PLXw+6FKp8r3Z7rx4ZszdetWlXYKOHoUrrwPlA==
+  dependencies:
+    get-stdin "^6.0.0"
+
 eslint-config-prettier@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.0.0.tgz#f429a53bde9fc7660e6353910fd996d6284d3c25"
@@ -3780,6 +3792,13 @@ eslint-plugin-jsx-a11y@6.2.1:
     emoji-regex "^7.0.2"
     has "^1.0.3"
     jsx-ast-utils "^2.0.1"
+
+eslint-plugin-prettier@^3.0.1:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.4.0.tgz#cdbad3bf1dbd2b177e9825737fe63b476a08f0c7"
+  integrity sha512-UDK6rJT6INSfcOo545jiaOwB701uAIt2/dR7WnFQoGCVl1/EMqdANBmwUaqqQ45aXprsTGzSa39LI1PyuRBxxw==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
 
 eslint-plugin-prettier@^3.1.0:
   version "3.1.0"
@@ -4359,6 +4378,15 @@ fork-ts-checker-webpack-plugin@1.1.1:
     semver "^5.6.0"
     tapable "^1.0.0"
     worker-rpc "^0.1.0"
+
+form-data@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.5.1.tgz#f2cbec57b5e59e23716e128fe44d4e5dd23895f4"
+  integrity sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.6"
+    mime-types "^2.1.12"
 
 form-data@~2.3.2:
   version "2.3.3"
@@ -6967,6 +6995,19 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
+onchange@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/onchange/-/onchange-5.2.0.tgz#85c1b502ce8538ddb64eb0557fdb1afa33396f51"
+  integrity sha512-kBNMF4KU1m0GkZCANckQZs3N41esf950T/gv7JIjNS6qWS8R34+iCKk/wmVRPEdaYCA+yi2aK2vNXS0RaB/V2A==
+  dependencies:
+    "@blakeembrey/deque" "^1.0.3"
+    arrify "^1.0.1"
+    chokidar "^2.0.0"
+    cross-spawn "^6.0.0"
+    minimist "^1.2.0"
+    supports-color "^5.5.0"
+    tree-kill "^1.2.0"
+
 onetime@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
@@ -8054,6 +8095,11 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
+prettier@^1.16.4:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+
 prettier@^1.18.2, prettier@^1.7.0:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
@@ -8145,7 +8191,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^3.0.0"
 
-prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8252,9 +8298,9 @@ querystring@0.2.0:
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 querystringify@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
-  integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 raf@3.4.1:
   version "3.4.1"
@@ -8262,6 +8308,16 @@ raf@3.4.1:
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
   dependencies:
     performance-now "^2.1.0"
+
+random-id@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/random-id/-/random-id-0.0.2.tgz#291b7d76d39c914196ca4b19d83509e67cdf1590"
+  integrity sha1-KRt9dtOckUGWyksZ2DUJ5nzfFZA=
+
+random-id@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/random-id/-/random-id-1.0.3.tgz#e9d7183caa1759a68582f3da4230454aded0eea3"
+  integrity sha512-PbWMyIFUTeGWkqHTovth3Ww2i1zg54BubSwSTw4VVptfC2TlhMKo1CzfRUosz7ltJmfgJ/wrLEt/nyDf5Glx/Q==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
@@ -8372,6 +8428,16 @@ react-dev-utils@^9.0.1:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
+react-dom@^16.4.1:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
+  integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.19.1"
+
 react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
@@ -8403,6 +8469,21 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
+
+react-native-chatbot@0.0.1-alpha.12:
+  version "0.0.1-alpha.12"
+  resolved "https://registry.yarnpkg.com/react-native-chatbot/-/react-native-chatbot-0.0.1-alpha.12.tgz#e201f7a9485ffda48e5498dbfb25f6da121c4e13"
+  integrity sha512-LN0Z0kVp6cJ1+0w5nqvuEexv3nGgthanP6hqEms5nHGZ8MTkUh6LhI3GGHhQZdOLz4lommCZDwuVqm8CLFMTrQ==
+  dependencies:
+    lodash "^4.17.4"
+    prop-types "^15.5.10"
+    random-id "1.0.3"
+    react-native-loader "^1.1.0"
+
+react-native-loader@^1.1.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-loader/-/react-native-loader-1.3.1.tgz#fb0a840cf73ca38d574795d5ff52f66c694edf98"
+  integrity sha512-fvWD9a1vIw8QPqhsFVU70WSbXFRLmj0DbtujpBAH3oUTxwlS8WDvH4z/8nfiITW9FRkjucSdpePxilTqaiDAZg==
 
 react-overlays@^1.2.0:
   version "1.2.0"
@@ -8531,6 +8612,21 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
+react-simple-chatbot@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-simple-chatbot/-/react-simple-chatbot-0.6.1.tgz#30d08083e0b0283b78b84312df674e2cd6ac6703"
+  integrity sha512-q9y5GXwBvD+YvLgDVyDuZHYMkrcgIirm1FVV9RkR7XojPmbiX1lCzT6ib8U1M5zh42kTUBRnszXzkAGm9e0K8w==
+  dependencies:
+    eslint-config-prettier "^4.1.0"
+    eslint-plugin-prettier "^3.0.1"
+    flatted "^2.0.0"
+    onchange "^5.2.0"
+    prettier "^1.16.4"
+    prop-types "^15.6.0"
+    random-id "0.0.2"
+    react "^16.4.1"
+    react-dom "^16.4.1"
+
 react-swift-slider@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-swift-slider/-/react-swift-slider-6.3.0.tgz#75b3a6843218ac1743e79ea775b82c25d2466bc6"
@@ -8547,6 +8643,15 @@ react-transition-group@^4.0.0:
     "@babel/runtime" "^7.4.5"
     dom-helpers "^3.4.0"
     loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
+react@^16.4.1:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
     prop-types "^15.6.2"
 
 react@^16.8.6:
@@ -9016,6 +9121,14 @@ scheduler@^0.13.6:
   version "0.13.6"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"
   integrity sha512-IWnObHt413ucAYKsD9J1QShUKkbKLQQHdxRyw73sw4FN26iWr3DY/H34xGPe4nmL1DwXyWmSWmMrA9TfQbE/XQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
+  integrity sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -9847,6 +9960,11 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
+tree-kill@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
+  integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
+
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
@@ -10101,9 +10219,9 @@ url-loader@1.1.2:
     schema-utils "^1.0.0"
 
 url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
+  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
